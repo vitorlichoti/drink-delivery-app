@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import httpRequestAxios from '../utils/httpRequestAxios';
 import httpCodeHandler from '../assets/httpCodeHandler';
@@ -9,6 +10,7 @@ function Login() {
   const [invalidUser, setInvalidUser] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   function emailHandler(inputemail) {
     const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
@@ -25,12 +27,13 @@ function Login() {
   const validateDBUser = async (event, data) => {
     event.preventDefault();
 
-    const { status } = await httpRequestAxios('post', 'http://localhost:3001/login', data);
+    const response = await httpRequestAxios('post', 'http://localhost:3001/login', data);
 
-    if (httpCodeHandler.notFound(status)) setInvalidUser(true);
-    if (httpCodeHandler.success(status)) {
+    if (httpCodeHandler.notFound(response.status)) setInvalidUser(true);
+    if (httpCodeHandler.success(response.status)) {
       setInvalidUser(false);
-      // em seguida, faremos o redirect para a página home e demais tratamentos do usuário nesse bloco de código
+
+      navigate('/customer/products');
     }
   };
 
