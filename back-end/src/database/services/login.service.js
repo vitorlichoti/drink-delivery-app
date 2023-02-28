@@ -1,11 +1,10 @@
-const { User } = require('../models')
-
+const { Users } = require('../models')
 const md5 = require('md5')
 
-const getUserEmail = (email) => User.findOne({ where: { email }});
+const getUserEmail = (email) => Users.findOne({ where: { email }});
 
-const checkLogin = (email, password) => {
-  const userInfo = getUserEmail(email);
+const checkLogin = async (email, password) => {
+  const userInfo = await getUserEmail(email);
 
   if(!userInfo) return { type: 404, message: 'User not found' }
 
@@ -13,9 +12,9 @@ const checkLogin = (email, password) => {
 
   if(cryptPassword === userInfo.password)  {
     return { type: 200, message: 'token' }
-  } 
+  }
+  return { type: 404, message: 'Incorrect password' }
 }
-
 
 module.exports = {
   checkLogin,

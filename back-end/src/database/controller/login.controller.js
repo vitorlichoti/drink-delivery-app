@@ -1,14 +1,18 @@
-const { checkLogin } = require('../services/login.service')
+const service  = require('../services/login.service');
 
-module.exports = async (req, res) => {
-  try {
-    const { email, password } = req.body;
+const isBodyValid = (email, password) => email && password;
 
-    const { type , message } = checkLogin(email, password);
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  const { type , message } = await service.checkLogin(email, password);
 
-    return res.status(type).json(message)
-
-  } catch(error) {
-    console.log(error)
+  if(!isBodyValid(email, password)) {
+    return res.status(400).json({message: 'Email or password wrong.'});
   }
+
+  return res.status(type).json(message)
+}
+
+module.exports = {
+  login
 }
