@@ -1,5 +1,5 @@
-const loginController = require('../database/controller/login.controller')
+const loginController = require('../database/controller/login.controller');
 
 module.exports = {
-  loginController
-}
+  loginController,
+};
