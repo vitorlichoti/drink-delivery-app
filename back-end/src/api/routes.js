@@ -1,4 +1,4 @@
-const loginController = require('../database/controller/login.controller');
+const loginController = require('./controller/login.controller');
 
 module.exports = {
   loginController,
