@@ -1,4 +1,4 @@
-const MINIMAL_LENGTH = 6;
-const test = '123';
+const PASSWORD_MINIMAL_LENGTH = 6;
+const NAME_MINIMAL_LENGTH = 12;
 
-export { MINIMAL_LENGTH, test };
+export { PASSWORD_MINIMAL_LENGTH, NAME_MINIMAL_LENGTH };
