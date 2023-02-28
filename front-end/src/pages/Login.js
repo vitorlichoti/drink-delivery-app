@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+
+import httpRequestAxios from '../utils/httpRequestAxios';
+import httpCodeHandler from '../assets/httpCodeHandler';
+
 import { MINIMAL_LENGTH } from '../assets/constants';
 
 function Login() {
+  const [invalidUser, setInvalidUser] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
@@ -17,9 +22,21 @@ function Login() {
   const verifyemail = emailHandler(email);
   const verifyPassword = passwordHandler(password);
 
+  const validateDBUser = async (event, data) => {
+    event.preventDefault();
+
+    const { status } = await httpRequestAxios('post', 'http://localhost:3001/login', data);
+
+    if (httpCodeHandler.notFound(status)) setInvalidUser(true);
+    if (httpCodeHandler.success(status)) {
+      setInvalidUser(false);
+      // em seguida, faremos o redirect para a página home e demais tratamentos do usuário nesse bloco de código
+    }
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={ (event) => validateDBUser(event, { email, password }) }>
         <label htmlFor="email">
           {' '}
           Login
@@ -61,7 +78,7 @@ function Login() {
       <span
         data-testid="common_login__element-invalid-email"
       >
-        Email invalido OCULTARRRR!
+        { invalidUser && <p>Dados inválidos</p> }
       </span>
     </div>
   );
