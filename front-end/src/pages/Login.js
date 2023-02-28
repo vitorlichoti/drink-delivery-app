@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { MINIMAL_LENGTH } from '../assets/constants';
 
 function Login() {
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  function emailHandler(inputemail) {
+    const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
+    return emailRegex.test(inputemail);
+  }
+
+  function passwordHandler(inputPassowrd) {
+    return inputPassowrd.length >= MINIMAL_LENGTH;
+  }
+
+  const verifyemail = emailHandler(email);
+  const verifyPassword = passwordHandler(password);
+
   return (
     <div>
       <form>
@@ -12,6 +28,8 @@ function Login() {
             name="email"
             id="email"
             data-testid="common_login__input-email"
+            value={ email }
+            onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
         <label htmlFor="password">
@@ -22,11 +40,14 @@ function Login() {
             name="password"
             id="password"
             data-testid="common_login__input-password"
+            value={ password }
+            onChange={ ({ target }) => setPassword(target.value) }
           />
         </label>
         <button
           type="submit"
           data-testid="common_login__button-login"
+          disabled={ !(verifyemail && verifyPassword) }
         >
           LOGIN
         </button>
