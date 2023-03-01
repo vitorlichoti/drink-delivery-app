@@ -1,6 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { readStorage, removeToken } from '../utils/localStorage';
 
 function NavBar() {
+  const { name } = readStorage();
+  const navigate = useNavigate();
+
   return (
     <menu>
       <div data-testid="customer_products__element-navbar-link-products">
@@ -10,11 +15,18 @@ function NavBar() {
         Meus Pedidos
       </div>
       <div data-testid="customer_products__element-navbar-user-full-name">
-        Nome do usuário
+        { name }
       </div>
-      <div data-testid="customer_products__element-navbar-link-logout">
+      <button
+        data-testid="customer_products__element-navbar-link-logout"
+        type="button"
+        onClick={ () => {
+          removeToken();
+          navigate('/login');
+        } }
+      >
         Sair
-      </div>
+      </button>
     </menu>
   );
 }

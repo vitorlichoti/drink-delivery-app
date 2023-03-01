@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import httpRequestAxios from '../utils/httpRequestAxios';
@@ -6,7 +6,7 @@ import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
 import { writeStorage } from '../utils/localStorage';
-import tokenValidator from '../utils/tokenValidator';
+// import tokenValidator from '../utils/tokenValidator';
 
 function Login() {
   const [invalidUser, setInvalidUser] = useState(false);
@@ -22,10 +22,6 @@ function Login() {
   function passwordHandler(inputPassowrd) {
     return inputPassowrd.length >= PASSWORD_MINIMAL_LENGTH;
   }
-
-  useEffect(() => {
-    tokenValidator();
-  }, [invalidUser]);
 
   const verifyemail = emailHandler(email);
   const verifyPassword = passwordHandler(password);
