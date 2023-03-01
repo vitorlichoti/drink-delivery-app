@@ -8,10 +8,11 @@ const jwtVerify = (token) => {
     return { type: 404, message: 'Token not found' };
   }
 
-  const decoded = jwt.verify(token, secret);
-
-  if (decoded.role !== 'administrator') {
-    return { type: 404, message: 'Access denied' };
+  try {
+    const decoded = jwt.verify(token, secret);
+    return { type: 200, message: decoded };
+  } catch (error) {
+    return { type: 401, message: 'Invalid token' };
   }
 };
 
