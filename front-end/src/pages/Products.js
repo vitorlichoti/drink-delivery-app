@@ -12,12 +12,15 @@ function Products() {
   const { token } = readStorage();
 
   useEffect(() => {
-    const res = httpRequestAxios('post', 'http://localhost:3001/token', {}, token);
-    if (res.status !== TWO_HUNDRED) {
-      removeToken();
-      navigate('/login');
+    async function verifyToken() {
+      const res = await httpRequestAxios('post', 'http://localhost:3001/token', {}, { headers: { Authorization: token } });
+      if (res.status !== TWO_HUNDRED) {
+        removeToken();
+        navigate('/login');
+      }
     }
-  }, [token]);
+    verifyToken();
+  });
 
   return (
     <main>
