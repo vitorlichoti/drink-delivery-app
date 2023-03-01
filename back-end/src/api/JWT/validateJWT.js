@@ -1,7 +1,9 @@
+const path = require('path');
+const fs = require('fs');
 const jwt = require('jsonwebtoken');
-require('dotenv/config');
 
-const secret = 'secret_key';
+const jwtKeyPath = path.resolve(__dirname, '../../../jwt.evaluation.key');
+const secret = fs.readFileSync(jwtKeyPath, 'utf8');
 
 const jwtVerify = (token) => {
   if (!token) {
