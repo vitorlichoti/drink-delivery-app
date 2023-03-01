@@ -43,6 +43,7 @@ function CustomerProducts() {
             <input
               data-testid={ `customer_products__input-card-quantity-${product.id}` }
               type="number"
+              defaultValue={ 0 }
             />
             <button
               data-testid={ `customer_products__button-card-add-item-${product.id}` }
