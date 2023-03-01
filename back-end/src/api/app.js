@@ -8,7 +8,7 @@ app.use(cors());
 const loginRoute = require('./routes/login.route');
 const registerRoute = require('./routes/register.route');
 const customerRoute = require('./routes/customer.router');
-const token = require('./routes/token.router')
+const token = require('./routes/token.router');
 
 const IMAGES_PATH = path.resolve(__dirname, '../../public');
 
