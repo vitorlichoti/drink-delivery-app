@@ -9,8 +9,9 @@ const register = async (req, res) => {
   if (!isBodyValid(email, password)) {
     return res.status(400).json({ message: 'Name, email or password missing.' });
   }
+  const { token } = message;
 
-  return res.status(type).json(message);
+  return res.status(type).json({ name, email, role: 'customer', token });
 };
 
 module.exports = {
