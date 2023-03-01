@@ -34,8 +34,9 @@ function Register() {
   const registerDBUser = async (event, userData) => {
     event.preventDefault();
 
-    const { status } = await httpRequestAxios('post', 'http://localhost:3001/register', userData);
+    const { status, data } = await httpRequestAxios('post', 'http://localhost:3001/register', userData);
 
+    console.log(status);
     if (httpCodeHandler.conflict(status)) setInvalidUser(true);
     if (httpCodeHandler.created(status)) {
       setInvalidUser(false);
