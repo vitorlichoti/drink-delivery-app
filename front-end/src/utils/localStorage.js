@@ -6,8 +6,8 @@ function readStorage() {
   return JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY) || '[]');
 }
 
-function writeStorage(token) {
-  localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(token));
+function writeStorage(data) {
+  localStorage.setItem('teste', JSON.stringify(data));
 }
 
 function getCartProducts() {

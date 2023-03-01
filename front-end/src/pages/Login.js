@@ -5,6 +5,7 @@ import httpRequestAxios from '../utils/httpRequestAxios';
 import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
+import { writeStorage } from '../utils/localStorage';
 
 function Login() {
   const [invalidUser, setInvalidUser] = useState(false);
@@ -24,15 +25,15 @@ function Login() {
   const verifyemail = emailHandler(email);
   const verifyPassword = passwordHandler(password);
 
-  const validateDBUser = async (event, data) => {
+  const validateDBUser = async (event, userData) => {
     event.preventDefault();
 
-    const { status } = await httpRequestAxios('post', 'http://localhost:3001/login', data);
+    const { status, data } = await httpRequestAxios('post', 'http://localhost:3001/login', userData);
 
     if (httpCodeHandler.notFound(status)) setInvalidUser(true);
     if (httpCodeHandler.success(status)) {
       setInvalidUser(false);
-
+      writeStorage(data);
       navigate('/customer/products');
     }
   };
