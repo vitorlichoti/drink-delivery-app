@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
 
-const secret = 'senhasupersecreta';
+const secret = 'secret_key';
 
 const jwtVerify = (token) => {
   if (!token) {
