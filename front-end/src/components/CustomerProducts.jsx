@@ -10,6 +10,7 @@ function CustomerProducts() {
   }
 
   useEffect(() => {
+    // obtém todos os produtos ao atualizar a página
     getAllProducts();
   }, [products]);
 
