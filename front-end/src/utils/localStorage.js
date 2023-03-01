@@ -1,13 +1,13 @@
 // import axios from "axios";
 
-const TOKEN_STORAGE_KEY = 'token';
+const USER_STORAGE_KEY = 'user';
 
 function readStorage() {
-  return JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY) || '[]');
+  return JSON.parse(localStorage.getItem(USER_STORAGE_KEY) || '[]');
 }
 
 function writeStorage(data) {
-  localStorage.setItem('teste', JSON.stringify(data));
+  localStorage.setItem('user', JSON.stringify(data));
 }
 
 function getCartProducts() {
