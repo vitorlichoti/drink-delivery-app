@@ -5,6 +5,8 @@ import { NAME_MINIMAL_LENGTH, PASSWORD_MINIMAL_LENGTH } from '../assets/constant
 import httpRequestAxios from '../utils/httpRequestAxios';
 import httpCodeHandler from '../assets/httpCodeHandler';
 
+import { writeStorage } from '../utils/localStorage';
+
 function Register() {
   const [invalidUser, setInvalidUser] = useState(false);
   const [name, setName] = useState('');
@@ -37,7 +39,7 @@ function Register() {
     if (httpCodeHandler.conflict(status)) setInvalidUser(true);
     if (httpCodeHandler.created(status)) {
       setInvalidUser(false);
-
+      writeStorage(data);
       navigate('/customer/products');
     }
   };
