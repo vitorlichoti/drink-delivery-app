@@ -1,8 +1,13 @@
 import React from 'react';
+import NavBar from '../components/NavBar';
+import CustomerProducts from '../components/CustomerProducts';
 
 function Products() {
   return (
-    <div>Products</div>
+    <main>
+      <NavBar />
+      <CustomerProducts />
+    </main>
   );
 }
 
