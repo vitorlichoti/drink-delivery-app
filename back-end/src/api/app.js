@@ -8,6 +8,7 @@ app.use(cors());
 const loginRoute = require('./routes/login.route');
 const registerRoute = require('./routes/register.route');
 const customerRoute = require('./routes/customer.router');
+
 const IMAGES_PATH = path.resolve(__dirname, '../../public');
 
 app.use(express.json());
