@@ -7,7 +7,7 @@ const login = async (req, res) => {
   const { type, message } = await service.checkLogin(email, password);
 
   if (!isBodyValid(email, password)) {
-    return res.status(400).json({ message: 'Email or password wrong.' });
+    return res.status(400).json({ message: 'Email or password missing.' });
   }
 
   return res.status(type).json(message);
