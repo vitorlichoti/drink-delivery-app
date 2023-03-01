@@ -15,7 +15,12 @@ const checkLogin = async (email, password) => {
     const { role } = userInfo;
     const data = { role };
     const token = tokenGenerator(data);
-    return { type: 200, message: { token } };
+    return { type: 200, message: {
+      name: userInfo.name,
+      email: userInfo.email,
+      role: userInfo.role,
+      token,
+    } };
   }
 
   return { type: 404, message: 'Incorrect password' };
