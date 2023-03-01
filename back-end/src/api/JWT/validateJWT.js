@@ -16,5 +16,4 @@ const jwtVerify = (token) => {
   }
 };
 
-
 module.exports = jwtVerify;
