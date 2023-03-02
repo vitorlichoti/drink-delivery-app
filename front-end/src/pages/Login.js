@@ -5,7 +5,7 @@ import httpRequestAxios from '../utils/httpRequestAxios';
 import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
-import { readStorage, writeStorage } from '../utils/localStorage';
+import { writeStorage } from '../utils/localStorage';
 // import tokenValidator from '../utils/tokenValidator';
 
 function Login() {
