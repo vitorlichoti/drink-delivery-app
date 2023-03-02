@@ -37,7 +37,7 @@ function Login() {
       if (data.role === 'administrator') {
         navigate('/admin/manage');
         writeStorage(data);
-      } else if (role === 'seller') {
+      } else if (data.role === 'seller') {
         setInvalidUser(false);
         writeStorage(data);
         navigate('/seller/orders');
