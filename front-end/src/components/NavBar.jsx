@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { readStorage, removeToken } from '../utils/localStorage';
 
 function NavBar() {
-  const { name, role } = readStorage();
+  const { name } = readStorage();
   const navigate = useNavigate();
 
   return (
