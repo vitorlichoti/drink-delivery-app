@@ -3,19 +3,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { readStorage, removeToken } from '../utils/localStorage';
 
 function NavBar() {
-  const { name, role } = readStorage();
+  const { name } = readStorage();
   const navigate = useNavigate();
 
   return (
     <menu>
       <Link
-        to={ `/${role}/products` }
+        to="/customer/products"
         data-testid="customer_products__element-navbar-link-products"
       >
         Produtos
       </Link>
       <Link
-        to={ `/${role}/orders` }
+        to="/customer/orders"
         data-testid="customer_products__element-navbar-link-orders"
       >
         Meus Pedidos
