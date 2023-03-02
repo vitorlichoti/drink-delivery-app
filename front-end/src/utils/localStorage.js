@@ -15,11 +15,11 @@ function getCartProducts() {
 }
 
 function addProductToCart(product) {
-  const products = readStorage();
-  const alreadyInProduct = products.find(({ id }) => id === product.id);
+  const productss = readStorage();
+  const alreadyInProduct = productss.find(({ id }) => id === product.id);
   if (alreadyInProduct) {
     writeStorage(
-      products.map((currentProduct) => ({
+      productss.map((currentProduct) => ({
         ...currentProduct,
         length:
           currentProduct.id === product.id
@@ -29,7 +29,7 @@ function addProductToCart(product) {
     );
     return;
   }
-  writeStorage([...products, { ...product, length: 1 }]);
+  writeStorage([...productss, { ...product, length: 1 }]);
 }
 
 function removeToken() {
