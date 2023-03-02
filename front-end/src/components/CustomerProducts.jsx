@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import httpRequestAxios from '../utils/httpRequestAxios';
 
+import { addProductToCart, decreaseCartProduct } from '../utils/localStorage';
+
 function CustomerProducts() {
   const [products, setProducts] = useState([]);
 
@@ -15,7 +17,7 @@ function CustomerProducts() {
   }, [products]);
 
   return (
-    <div>
+    <div style={ { display: 'flex', flexWrap: 'wrap' } }>
       {
         products.map((product) => (
           <div key={ product.id }>
@@ -38,6 +40,9 @@ function CustomerProducts() {
             <button
               data-testid={ `customer_products__button-card-rm-item-${product.id}` }
               type="button"
+              onClick={ ({ target }) => {
+                decreaseCartProduct(product.id, target.nextElementSibling.value);
+              } }
             >
               -
             </button>
@@ -49,6 +54,9 @@ function CustomerProducts() {
             <button
               data-testid={ `customer_products__button-card-add-item-${product.id}` }
               type="button"
+              onClick={ ({ target }) => {
+                addProductToCart(product, target.previousElementSibling.value);
+              } }
             >
               +
             </button>
