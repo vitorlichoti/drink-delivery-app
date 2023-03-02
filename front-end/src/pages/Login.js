@@ -33,9 +33,15 @@ function Login() {
 
     if (httpCodeHandler.notFound(status)) setInvalidUser(true);
     if (httpCodeHandler.success(status)) {
-      setInvalidUser(false);
-      writeStorage(data);
-      navigate('/customer/products');
+      if (data.role === 'administrator') {
+        console.log('a');
+        navigate('/admin/manage');
+        writeStorage(data);
+      } else {
+        setInvalidUser(false);
+        writeStorage(data);
+        navigate('/customer/products');
+      }
     }
   };
 
