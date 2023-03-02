@@ -5,7 +5,7 @@ import httpRequestAxios from '../utils/httpRequestAxios';
 import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
-import { writeStorage } from '../utils/localStorage';
+import { readStorage, writeStorage } from '../utils/localStorage';
 // import tokenValidator from '../utils/tokenValidator';
 
 function Login() {
@@ -13,6 +13,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
+  const { role } = readStorage();
 
   function emailHandler(inputemail) {
     const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
@@ -35,7 +36,9 @@ function Login() {
     if (httpCodeHandler.success(status)) {
       setInvalidUser(false);
       writeStorage(data);
-      navigate('/customer/products');
+      if (role === 'customer') {
+        navigate('/customer/products');
+      } else navigate('/seller/orders');
     }
   };
 

@@ -7,21 +7,25 @@ function NavBar() {
   const navigate = useNavigate();
 
   return (
-    <menu>
-      <Link
-        to={ `/${role}/products` }
-        data-testid="customer_products__element-navbar-link-products"
-      >
-        Produtos
-      </Link>
+    <menu style={ { display: 'flex', justifyContent: 'space-around' } }>
+      <div>
+        {role !== 'seller'
+          && (
+            <Link
+              to="/customer/products"
+              data-testid="customer_products__element-navbar-link-products"
+            >
+              Produtos
+            </Link>)}
+      </div>
       <Link
         to={ `/${role}/orders` }
         data-testid="customer_products__element-navbar-link-orders"
       >
-        Meus Pedidos
+        Pedidos
       </Link>
       <div data-testid="customer_products__element-navbar-user-full-name">
-        { name }
+        {name}
       </div>
       <button
         data-testid="customer_products__element-navbar-link-logout"
