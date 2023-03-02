@@ -5,7 +5,7 @@ import httpRequestAxios from '../utils/httpRequestAxios';
 import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
-import { readStorage, writeStorage } from '../utils/localStorage';
+import { writeStorage } from '../utils/localStorage';
 // import tokenValidator from '../utils/tokenValidator';
 
 function Login() {
@@ -13,7 +13,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
-  const { role } = readStorage();
 
   function emailHandler(inputemail) {
     const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
@@ -35,18 +34,14 @@ function Login() {
     if (httpCodeHandler.notFound(status)) setInvalidUser(true);
     if (httpCodeHandler.success(status)) {
       if (data.role === 'administrator') {
+        console.log('a');
         navigate('/admin/manage');
         writeStorage(data);
-      } else if (role === 'seller') {
-        setInvalidUser(false);
-        writeStorage(data);
-        navigate('/seller/orders');
       } else {
         setInvalidUser(false);
         writeStorage(data);
         navigate('/customer/products');
       }
-
     }
   };
 
