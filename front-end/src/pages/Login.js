@@ -13,7 +13,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
-  const { role } = readStorage();
 
   function emailHandler(inputemail) {
     const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
@@ -37,7 +36,7 @@ function Login() {
       if (data.role === 'administrator') {
         navigate('/admin/manage');
         writeStorage(data);
-      } else if (role === 'seller') {
+      } else if (data.role === 'seller') {
         setInvalidUser(false);
         writeStorage(data);
         navigate('/seller/orders');
@@ -46,7 +45,6 @@ function Login() {
         writeStorage(data);
         navigate('/customer/products');
       }
-
     }
   };
 
