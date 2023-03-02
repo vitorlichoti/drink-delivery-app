@@ -5,6 +5,7 @@ import OrderDetails from './pages/OrderDetails';
 import Orders from './pages/Orders';
 import Products from './pages/Products';
 import Register from './pages/Register';
+import Admin from './pages/Admin';
 
 function App() {
   return (
