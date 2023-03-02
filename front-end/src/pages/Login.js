@@ -13,7 +13,6 @@ function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
-  const { role } = readStorage();
 
   function emailHandler(inputemail) {
     const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
