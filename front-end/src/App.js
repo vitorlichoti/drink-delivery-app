@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Products from './pages/Products';
 import Register from './pages/Register';
+import Checkout from './pages/Checkout';
 // import './App.css';
 // import rockGlass from './images/rockGlass.svg';
 
@@ -24,6 +25,7 @@ function App() {
       <Route path="/login" element={ <Login /> } />
       <Route path="/customer/products" element={ <Products /> } />
       <Route path="/register" element={ <Register /> } />
+      <Route path="/customer/checkout" element={ <Checkout /> } />
     </Routes>
   );
 }

@@ -93,4 +93,5 @@ export {
   increaseCartProduct,
   decreaseCartProduct,
   removeToken,
+  readCartStorage,
 };
