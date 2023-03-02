@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function OrdersCards() {
+  // quando vier do banco, refatorar para montar dinamicamente os cards
+  // colocar <Link to={ `/customer/orders/${order.id}` }
   return (
-    <div>
+    <Link to="/customer/orders/1">
       <div>Pedido</div>
       <div
         data-testid="customer_orders__element-order-id-1"
@@ -24,7 +27,7 @@ function OrdersCards() {
       >
         53
       </div>
-    </div>
+    </Link>
   );
 }
 

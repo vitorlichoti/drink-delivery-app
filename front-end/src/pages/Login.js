@@ -34,11 +34,19 @@ function Login() {
 
     if (httpCodeHandler.notFound(status)) setInvalidUser(true);
     if (httpCodeHandler.success(status)) {
-      setInvalidUser(false);
-      writeStorage(data);
-      if (role === 'customer') {
+      if (data.role === 'administrator') {
+        navigate('/admin/manage');
+        writeStorage(data);
+      } else if (role === 'seller') {
+        setInvalidUser(false);
+        writeStorage(data);
+        navigate('/seller/orders');
+      } else {
+        setInvalidUser(false);
+        writeStorage(data);
         navigate('/customer/products');
-      } else navigate('/seller/orders');
+      }
+
     }
   };
 
