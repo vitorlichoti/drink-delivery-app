@@ -50,7 +50,7 @@ function TableProducts() {
               <td
                 data-testid={ `${TESTID_COMMON}table-sub-total-${index}` }
               >
-                {Math.round(Number(product.price) * Number(product.quantity) * 100) / 100}
+                {(Math.round(Number(product.price * product.quantity) * 100) / 100).toFixed(2).replace(/\./, ',')}
               </td>
               <td>
                 <button
@@ -68,11 +68,14 @@ function TableProducts() {
       <h1
         data-testid={ `${TESTID_COMMON}total-price` }
       >
+        TOTAL: R$
+        {' '}
         {products.length > 0
           ? products.map((product) => Math
             .round(product.price
               * product.quantity * 100) / 100)
             .reduce((acc, cur) => acc + cur)
+            .toFixed(2).replace(/\./, ',')
           : null}
       </h1>
     </main>
