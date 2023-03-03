@@ -6,8 +6,22 @@ import Orders from './pages/Orders';
 import SellerOrderDetail from './pages/SellerOrderDetail';
 import Products from './pages/Products';
 import Register from './pages/Register';
+import Checkout from './pages/Checkout';
 import SellerOrders from './pages/SellerOrders';
 import Admin from './pages/Admin';
+// import './App.css';
+// import rockGlass from './images/rockGlass.svg';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <span className="logo">TRYBE</span>
+//       <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
+//         Glass
+//       </object>
+//     </div>
+//   );
+// }
 
 function App() {
   return (
@@ -20,6 +34,7 @@ function App() {
       <Route path="/seller/orders/1" element={ <SellerOrderDetail /> } />
       <Route path="/customer/orders/:id" element={ <OrderDetails /> } />
       <Route path="/register" element={ <Register /> } />
+      <Route path="/customer/checkout" element={ <Checkout /> } />
       <Route path="/admin/manage" element={ <Admin /> } />
     </Routes>
   );

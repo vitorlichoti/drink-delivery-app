@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  # Serviço que irá rodar o banco de dados
+  db:
+    # Caso esteja utilizando MacOS M1, descomentar a linha abaixo
+    # platform: linux/x86_64
+    # Se a linha de cima não resolver, esta abaixo é outra opção
+    # platform: linux/arm64/v8
+    container_name: appdelivery_db
+    image: mysql:8.0.21
+    restart: always
+    # Lista de portas mapeadas de dentro para fora do container
+    # na notação porta_de_fora:porta_de_dentro
+    ports:
+      # Expõe a porta padrão do banco de dados
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
