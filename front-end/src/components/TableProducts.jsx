@@ -9,6 +9,8 @@ function TableProducts() {
     setProduts(readCartStorage());
   };
 
+  const TESTID_COMMON = 'customer_checkout__element-order-';
+
   return (
     <main>
       <table>
@@ -23,59 +25,55 @@ function TableProducts() {
           </tr>
         </thead>
         <tbody>
-          { products.map((product, index) => (
+          {products.map((product, index) => (
             <tr key={ product.id }>
               <td
-                data-testid={ `costumer_checkout_
-                _element-order-tablet-item-number-${index}` }
+                data-testid={ `${TESTID_COMMON}table-item-number-${index}` }
               >
                 {index + 1}
               </td>
               <td
-                data-testid={ `costumer_checkout_
-                _element-order-tablet-name-${index}` }
+                data-testid={ `${TESTID_COMMON}table-name-${index}` }
               >
                 {product.name}
               </td>
               <td
-                data-testid={ `costumer_checkout_
-                _element-order-tablet-quantity-${index}` }
+                data-testid={ `${TESTID_COMMON}table-quantity-${index}` }
               >
                 {product.quantity}
               </td>
               <td
-                data-testid={ `costumer_checkout_
-                _element-order-tablet-unit-price-${index}` }
+                data-testid={ `${TESTID_COMMON}table-unit-price-${index}` }
               >
                 {product.price}
               </td>
               <td
-                data-testid={ `costumer_checkout_
-                _element-order-tablet-sub-total-${index}` }
+                data-testid={ `${TESTID_COMMON}table-sub-total-${index}` }
               >
                 {Math.round(Number(product.price) * Number(product.quantity) * 100) / 100}
               </td>
               <td>
                 <button
                   type="button"
-                  data-testid={ `costumer_checkout_
-                  _element-order-tablet-remove-${index}` }
+                  data-testid={ `${TESTID_COMMON}table-remove-${index}` }
                   onClick={ () => removeItem(product.id) }
                 >
                   Remove
                 </button>
               </td>
             </tr>
-          )) }
+          ))}
         </tbody>
       </table>
       <h1
-        data-testid="costumer_checkout_
-       _element-order-total-price"
+        data-testid={ `${TESTID_COMMON}total-price` }
       >
-        {products.map((product) => Math
-          .round(product.price * product.quantity * 100) / 100)
-          .reduce((acc, cur) => acc + cur)}
+        {products.length > 0
+          ? products.map((product) => Math
+            .round(product.price
+              * product.quantity * 100) / 100)
+            .reduce((acc, cur) => acc + cur)
+          : null}
       </h1>
     </main>
   );
