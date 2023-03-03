@@ -6,7 +6,6 @@ import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
 import { writeStorage } from '../utils/localStorage';
-// import tokenValidator from '../utils/tokenValidator';
 
 function Login() {
   const [invalidUser, setInvalidUser] = useState(false);

@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 app.use(cors());
 
-const sellersRoute = require('./routes/sellers.router')
+const sellersRoute = require('./routes/sellers.router');
 const loginRoute = require('./routes/login.route');
 const registerRoute = require('./routes/register.route');
 const customerRoute = require('./routes/customer.router');
