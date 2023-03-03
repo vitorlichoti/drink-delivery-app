@@ -1,20 +1,51 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import httpRequestAxios from '../utils/httpRequestAxios';
-
-import { addProductToCart, decreaseCartProduct } from '../utils/localStorage';
+import './CustomerProducts.css';
+import {
+  addProductToCart,
+  decreaseCartProduct,
+  readCartStorage,
+  changeCartProduct,
+} from '../utils/localStorage';
 
 function CustomerProducts() {
   const [products, setProducts] = useState([]);
+  const [totalValue, setTotalValue] = useState(0);
+  const [quantityList, setQuantityList] = useState({});
+
+  const navigate = useNavigate();
 
   async function getAllProducts() {
+    const productsListStorage = readCartStorage();
+    const newQuantity = {};
     const allProducts = await httpRequestAxios('get', 'http://localhost:3001/customer/products');
+    allProducts.data.forEach((product) => {
+      const { quantity } = productsListStorage
+        .find(({ id }) => id === product.id) || { quantity: 0 };
+      newQuantity[product.id] = quantity;
+    });
+    setQuantityList(newQuantity);
     setProducts(allProducts.data);
   }
 
+  async function getTotalValue() {
+    const productsListStorage = readCartStorage();
+    let newValue = 0;
+    productsListStorage.forEach(({ price, quantity }) => {
+      newValue += price * quantity;
+    });
+    setTotalValue(newValue.toFixed(2));
+  }
+
+  async function onLoad() {
+    await getAllProducts();
+    getTotalValue();
+  }
+
   useEffect(() => {
-    // obtém todos os produtos ao atualizar a página
-    getAllProducts();
-  }, [products]);
+    if (!products.length) onLoad();
+  });
 
   return (
     <div style={ { display: 'flex', flexWrap: 'wrap' } }>
@@ -40,8 +71,9 @@ function CustomerProducts() {
             <button
               data-testid={ `customer_products__button-card-rm-item-${product.id}` }
               type="button"
-              onClick={ ({ target }) => {
-                decreaseCartProduct(product.id, target.nextElementSibling.value);
+              onClick={ () => {
+                decreaseCartProduct(product.id);
+                onLoad();
               } }
             >
               -
@@ -49,13 +81,19 @@ function CustomerProducts() {
             <input
               data-testid={ `customer_products__input-card-quantity-${product.id}` }
               type="number"
-              defaultValue={ 0 }
+              min={ 0 }
+              value={ quantityList[product.id] }
+              onChange={ ({ target }) => {
+                changeCartProduct(product, target.value);
+                onLoad();
+              } }
             />
             <button
               data-testid={ `customer_products__button-card-add-item-${product.id}` }
               type="button"
-              onClick={ ({ target }) => {
-                addProductToCart(product, target.previousElementSibling.value);
+              onClick={ () => {
+                addProductToCart(product);
+                onLoad();
               } }
             >
               +
@@ -63,6 +101,20 @@ function CustomerProducts() {
           </div>
         ))
       }
+      <button
+        data-testid="customer_products__button-cart"
+        className="button-cart"
+        type="button"
+        disabled={ Number(totalValue) === 0 }
+        onClick={ () => navigate('/customer/checkout') }
+      >
+        <p>Ver carrinho:</p>
+        <p
+          data-testid="customer_products__checkout-bottom-value"
+        >
+          { String(totalValue).replace(/\./, ',') }
+        </p>
+      </button>
     </div>
   );
 }
