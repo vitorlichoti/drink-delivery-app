@@ -1,30 +1,49 @@
 import React, { useEffect, useState } from 'react';
-// import { readStorage } from '../utils/localStorage';
+import { useNavigate } from 'react-router-dom';
+import { readCartStorage, readStorage } from '../utils/localStorage';
 
-// import httpRequestAxios from '../utils/httpRequestAxios';
-
-// const TWO_HUNDRED = 200;
+import httpRequestAxios from '../utils/httpRequestAxios';
+import httpCodeHandler from '../assets/httpCodeHandler';
 
 function Forms() {
-  const [sellers, setSellers] = useState([{
-    id: 2,
-    name: 'Fulana Pereira',
-    email: 'fulana@deliveryapp.com',
-    password: '3c28d2b0881bf46457a853e0b07531c6',
-    role: 'seller',
-  }]);
+  const [sellers, setSellers] = useState([]);
+  const [address, setAddress] = useState('');
+  const [addressNumber, setAddressNumber] = useState('');
+  const navigate = useNavigate();
 
-  // const { token } = readStorage();
+  const { token, id } = readStorage();
+  const products = readCartStorage();
+  const totalPrice = (products.map((product) => Math
+    .round(product.price
+      * product.quantity * 100) / 100)
+    .reduce((acc, cur) => acc + cur)
+    .toFixed(2));
 
-  // useEffect(() => {
-  //   async function verifySeller() {
-  //     const { status, data } = await httpRequestAxios('get', 'http://localhost:3001/sellers', {}, { headers: { Authorization: token } });
-  //     if (status !== TWO_HUNDRED) {
-  //       setSellers(data);
-  //     }
-  //   }
-  //   verifySeller();
-  // });
+  useEffect(() => {
+    async function verifySeller() {
+      const { data } = await httpRequestAxios('get', 'http://localhost:3001/sellers', {}, { headers: { Authorization: token } });
+      setSellers(data);
+    }
+    verifySeller();
+  });
+
+  const orderFinish = async (event, userData) => {
+    event.preventDefault();
+
+    const newData = {
+      user_id: id,
+      seller_id: userData.seller_id,
+      total_price: totalPrice,
+      delivery_address: userData.delivery_address,
+      delivery_number: userData.delivery_number,
+      status: 'PENDING',
+      saleProduct: products,
+    };
+    const { status, data } = await httpRequestAxios('post', 'http://localhost:3001/customer/checkout', newData, { headers: { Authorization: token } });
+    if (httpCodeHandler.created(status)) {
+      navigate(`/customer/orders/${data.id}`);
+    }
+  };
 
   return (
     <main>
@@ -33,7 +52,8 @@ function Forms() {
         <form>
           P. Vendedora Responsável:
           <select
-            id="select-seller"
+            name="select"
+            id="select"
             data-testid="customer_checkout__select-seller"
           >
             <option value="" selected disabled hidden> </option>
@@ -49,18 +69,27 @@ function Forms() {
           Endereço
           <input
             type="text"
-            name="input-adress"
+            name="address"
+            value={ address }
+            onChange={ ({ target }) => setAddress(target.value) }
             data-testid="customer_checkout__input-address"
           />
           Número
           <input
             type="text"
-            name="input-adress-number"
+            name="addressNumber"
+            value={ addressNumber }
+            onChange={ ({ target }) => setAddressNumber(target.value) }
             data-testid="customer_checkout__input-address-number"
           />
           <button
-            type="button"
+            type="submit"
             data-testid="customer_checkout__button-submit-order"
+            onClick={ (event) => orderFinish(event, {
+              seller_id: select.value,
+              delivery_address: address,
+              delivery_number: addressNumber,
+            }) }
           >
             FINALIZAR PEDIDO
           </button>
