@@ -34,9 +34,12 @@ function Login() {
     if (httpCodeHandler.notFound(status)) setInvalidUser(true);
     if (httpCodeHandler.success(status)) {
       if (data.role === 'administrator') {
-        console.log('a');
         navigate('/admin/manage');
         writeStorage(data);
+      } else if (data.role === 'seller') {
+        setInvalidUser(false);
+        writeStorage(data);
+        navigate('/seller/orders');
       } else {
         setInvalidUser(false);
         writeStorage(data);
