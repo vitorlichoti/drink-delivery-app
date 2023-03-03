@@ -45,7 +45,7 @@ function TableProducts() {
               <td
                 data-testid={ `${TESTID_COMMON}table-unit-price-${index}` }
               >
-                {product.price}
+                {product.price.replace(/\./, ',')}
               </td>
               <td
                 data-testid={ `${TESTID_COMMON}table-sub-total-${index}` }
