@@ -1,8 +1,8 @@
 .button-cart {
   bottom: 20px;
   position: fixed;
-  right: 30px;
   align-content: space-between;
+  right: 30px;
   display: flex;
   width: 150px;
 }
