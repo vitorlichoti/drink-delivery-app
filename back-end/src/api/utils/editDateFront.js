@@ -9,9 +9,9 @@ const formatedSale = (data) => {
   } = data;
 
   return {
-    user_id: Number(user_id),
-    seller_id: Number(seller_id),
-    total_price: Number(total_price),
+    userId: Number(user_id),
+    sellerId: Number(seller_id),
+    totalPrice: Number(total_price),
     delivery_address,
     delivery_number,
     sale_date: Date(),
@@ -20,20 +20,19 @@ const formatedSale = (data) => {
 }
 
 const formatedSaleProducts = (products, sale) => {
-  const addSaleId = products.map((e) => {sale, e});
+  const addSaleId = products.map((e) => ({
+    saleId: sale,
+    productId: e.id,
+    quantity: e.quantity,
+  }));
 
   return addSaleId;
 }
 
 const formatedData = (data) => {
   const sale = formatedSale(data);
-  console.log(data, sale);
-  const saleProduct = formatedSaleProducts(data.saleProduct, sale);
-
-  return {
-    sale,
-    saleProduct,
-  }
+  
+  return sale;
 };
 
-module.exports = { formatedData }
+module.exports = { formatedData, formatedSaleProducts }

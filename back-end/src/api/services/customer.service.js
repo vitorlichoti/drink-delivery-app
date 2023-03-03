@@ -1,5 +1,5 @@
-const { Products, SalesModel, SalesProductsModel } = require('../../database/models');
-const { formatedData } = require('../utils/editDateFront');
+const { Products, Sales, SalesProduct } = require('../../database/models');
+const { formatedData, formatedSaleProducts } = require('../utils/editDateFront');
 
 const getAllProducts = async () => {
   const allProducts = await Products.findAll();
@@ -7,12 +7,14 @@ const getAllProducts = async () => {
 };
 
 const createSale = async (checkoutSale) => {
-  const { sale, saleProduct } = formatedData(checkoutSale);
+  const sale = formatedData(checkoutSale);
   
-  const saleCreated = await SalesModel.create(sale);
-  await SalesProductsModel.bulkCreate(saleProduct);
+  const { id } = await Sales.create(sale);
+  const saleProduct = formatedSaleProducts(checkoutSale.saleProduct, id);
 
-  return saleCreated;
+  await SalesProduct.bulkCreate(saleProduct);
+
+  return id;
 };
 
 module.exports = {
