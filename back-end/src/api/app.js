@@ -22,7 +22,7 @@ app.get('/coffee', (_req, res) => res.status(418).end());
 app.use(loginRoute);
 app.use(adminRoute);
 app.use(registerRoute);
-app.use(customerRoute);
+app.use('/customer', customerRoute);
 app.use(token);
 app.use(sellerSalesRoute);
 app.use('/images', express.static(IMAGES_PATH));
