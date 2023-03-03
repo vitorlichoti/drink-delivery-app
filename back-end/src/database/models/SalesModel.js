@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   },
     {
       tableName: 'sales',
-      createdAt: 'published',
-      timestamps: true,
+      timestamps: false,
       underscored: true,
     });
 
