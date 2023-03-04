@@ -21,7 +21,7 @@ const checkLogin = async (email, password) => {
         email: userInfo.email,
         role: userInfo.role,
         token,
-    } };
+      } };
   }
 
   return { type: 404, message: 'Incorrect password' };

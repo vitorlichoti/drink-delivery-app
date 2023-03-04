@@ -11,7 +11,7 @@ function Forms() {
   const [addressNumber, setAddressNumber] = useState('');
   const navigate = useNavigate();
 
-  const { token, id } = readStorage();
+  const { token, email } = readStorage();
   const products = readCartStorage();
   const totalPrice = (products.map((product) => Math
     .round(product.price
@@ -31,7 +31,7 @@ function Forms() {
     event.preventDefault();
 
     const newData = {
-      user_id: id,
+      userEmail: email,
       seller_id: userData.seller_id,
       total_price: totalPrice,
       delivery_address: userData.delivery_address,
