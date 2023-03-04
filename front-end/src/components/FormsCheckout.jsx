@@ -32,15 +32,16 @@ function Forms() {
 
     const newData = {
       userEmail: email,
-      seller_id: userData.seller_id,
-      total_price: totalPrice,
-      delivery_address: userData.delivery_address,
-      delivery_number: userData.delivery_number,
-      status: 'PENDING',
+      sellerId: userData.seller_id,
+      totalPrice,
+      deliveryAddress: userData.delivery_address,
+      deliveryNumber: userData.delivery_number,
+      status: 'Pendente',
       saleProduct: products,
     };
     const { status, data } = await httpRequestAxios('post', 'http://localhost:3001/customer/checkout', newData, { headers: { Authorization: token } });
     if (httpCodeHandler.created(status)) {
+      console.log(status, data);
       navigate(`/customer/orders/${data.id}`);
     }
   };

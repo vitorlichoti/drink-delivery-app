@@ -4,7 +4,7 @@ const formatedSale = async (data) => {
   const {
     userEmail,
     sellerId,
-    total_price,
+    totalPrice,
     deliveryAddress,
     deliveryNumber,
     status,
@@ -15,7 +15,7 @@ const formatedSale = async (data) => {
   return {
     userId: Number(id),
     sellerId: Number(sellerId),
-    totalPrice: Number(total_price),
+    totalPrice: Number(totalPrice),
     deliveryAddress,
     deliveryNumber,
     saleDate: Date(),
