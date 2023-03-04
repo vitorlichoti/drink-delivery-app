@@ -1,26 +1,27 @@
-const { getUserEmail } = require("../services/admin.service");
+const { getUserEmail } = require('../services/admin.service');
 
 const formatedSale = async (data) => {
   const {
     userEmail,
-    seller_id,
+    sellerId,
     total_price,
-    delivery_address,
-    delivery_number,
+    deliveryAddress,
+    deliveryNumber,
     status,
   } = data;
+
   const { id } = await getUserEmail(userEmail);
 
   return {
     userId: Number(id),
-    sellerId: Number(seller_id),
+    sellerId: Number(sellerId),
     totalPrice: Number(total_price),
-    delivery_address,
-    delivery_number,
-    sale_date: Date(),
+    deliveryAddress,
+    deliveryNumber,
+    saleDate: Date(),
     status,
-  }
-}
+  };
+};
 
 const formatedSaleProducts = (products, sale) => {
   const addSaleId = products.map((e) => ({
@@ -30,7 +31,7 @@ const formatedSaleProducts = (products, sale) => {
   }));
 
   return addSaleId;
-}
+};
 
 const formatedData = (data) => {
   const sale = formatedSale(data);
@@ -38,4 +39,4 @@ const formatedData = (data) => {
   return sale;
 };
 
-module.exports = { formatedData, formatedSaleProducts }
+module.exports = { formatedData, formatedSaleProducts };
