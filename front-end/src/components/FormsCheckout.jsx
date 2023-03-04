@@ -32,10 +32,10 @@ function Forms() {
 
     const newData = {
       userEmail: email,
-      seller_id: userData.seller_id,
-      total_price: totalPrice,
-      delivery_address: userData.delivery_address,
-      delivery_number: userData.delivery_number,
+      sellerId: userData.seller_id,
+      totalPrice,
+      deliveryAddress: userData.delivery_address,
+      deliveryNumber: userData.delivery_number,
       status: 'PENDING',
       saleProduct: products,
     };
