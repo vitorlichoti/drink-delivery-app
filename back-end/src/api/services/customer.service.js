@@ -7,11 +7,11 @@ const getAllProducts = async () => {
 };
 
 const createSale = async (checkoutSale) => {
-  const sale = formatedData(checkoutSale);
+  const sale = await formatedData(checkoutSale);
   
   const { id } = await Sales.create(sale);
-  const saleProduct = formatedSaleProducts(checkoutSale.saleProduct, id);
 
+  const saleProduct = formatedSaleProducts(checkoutSale.saleProduct, id);
   await SalesProduct.bulkCreate(saleProduct);
 
   return id;

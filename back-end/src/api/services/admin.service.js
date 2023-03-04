@@ -46,4 +46,5 @@ const findAllUsers = async () => {
 module.exports = {
   createAdminUser,
   findAllUsers,
+  getUserEmail,
 };

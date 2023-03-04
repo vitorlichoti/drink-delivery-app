@@ -1,15 +1,18 @@
-const formatedSale = (data) => {
+const { getUserEmail } = require("../services/admin.service");
+
+const formatedSale = async (data) => {
   const {
-    user_id,
+    userEmail,
     seller_id,
     total_price,
     delivery_address,
     delivery_number,
     status,
   } = data;
+  const { id } = await getUserEmail(userEmail);
 
   return {
-    userId: Number(user_id),
+    userId: Number(id),
     sellerId: Number(seller_id),
     totalPrice: Number(total_price),
     delivery_address,
