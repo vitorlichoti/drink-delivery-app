@@ -12,8 +12,7 @@ const createSale = async (checkoutSale) => {
   const { id } = await Sales.create(sale);
 
   const saleProduct = formatedSaleProducts(checkoutSale.saleProduct, id);
-  const productsInsert = await SalesProduct.bulkCreate(saleProduct);
-  console.log(productsInsert);
+  await SalesProduct.bulkCreate(saleProduct);
   return id;
 };
 
