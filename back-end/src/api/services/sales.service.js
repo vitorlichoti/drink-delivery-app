@@ -6,12 +6,12 @@ const getAllSales = async () => {
 };
 
 const getAllSalesByUserId = async (email) => {
-  const { id } = await Users.findOne({ where: { email } })
-  const sales = await Sales.findAll({ where: { userId: id} })
+  const { id } = await Users.findOne({ where: { email } });
+  const sales = await Sales.findAll({ where: { userId: id } });
   return sales;
-}
+};
 
 module.exports = {
   getAllSales,
-  getAllSalesByUserId
+  getAllSalesByUserId,
 };
