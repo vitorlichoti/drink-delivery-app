@@ -31,7 +31,7 @@ function App() {
       <Route path="/customer/products" element={ <Products /> } />
       <Route path="/customer/orders" element={ <Orders /> } />
       <Route path="/seller/orders" element={ <SellerOrders /> } />
-      <Route path="/seller/orders/1" element={ <SellerOrderDetail /> } />
+      <Route path="/seller/orders/:id" element={ <SellerOrderDetail /> } />
       <Route path="/customer/orders/:id" element={ <OrderDetails /> } />
       <Route path="/register" element={ <Register /> } />
       <Route path="/customer/checkout" element={ <Checkout /> } />
