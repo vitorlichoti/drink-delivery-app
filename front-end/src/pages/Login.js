@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import httpRequestAxios from '../utils/httpRequestAxios';
 import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
-import { writeStorage } from '../utils/localStorage';
+import { writeStorage, readStorage, removeToken } from '../utils/localStorage';
+
+const TWO_HUNDRED = 200;
 
 function Login() {
   const [invalidUser, setInvalidUser] = useState(false);
@@ -46,6 +48,35 @@ function Login() {
       }
     }
   };
+
+  const redirectOnLoad = async (role) => {
+    if (role === 'administrator') {
+      navigate('/admin/manage');
+    }
+
+    if (role === 'seller') {
+      navigate('/seller/orders');
+    }
+
+    if (role === 'customer') {
+      navigate('/customer/products');
+    }
+  };
+
+  useEffect(() => {
+    const user = readStorage();
+
+    async function verifyToken() {
+      const res = await httpRequestAxios('post', 'http://localhost:3001/token', {}, { headers: { Authorization: user.token } });
+      if (res.status !== TWO_HUNDRED) {
+        removeToken();
+      } else {
+        redirectOnLoad(user.role);
+      }
+    }
+
+    if (user.length !== 0) verifyToken();
+  }, []);
 
   return (
     <div>
