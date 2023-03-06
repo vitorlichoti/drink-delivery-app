@@ -28,7 +28,7 @@ function SellerOrdersCard() {
           key={ sale.id }
           type="button"
           onClick={ () => {
-            navigate('/seller/orders/1');
+            navigate(`/seller/orders/${sale.id}`);
           } }
         >
           <div
@@ -50,6 +50,11 @@ function SellerOrdersCard() {
             data-testid={ `seller_orders__element-card-price-${sale.id}` }
           >
             { sale.totalPrice.replace(/\./, ',') }
+          </div>
+          <div
+            data-testid={ `seller_orders__element-order-date-${sale.id}` }
+          >
+            { sale.deliveryAddress + sale.deliveryNumber }
           </div>
         </button>))}
     </section>
