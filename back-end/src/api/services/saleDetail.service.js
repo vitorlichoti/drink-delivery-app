@@ -1,7 +1,5 @@
 const { Sales, Users, Products } = require('../../database/models');
 
-const getUserId = (id) => Users.findOne({ where: { id } });
-
 const getSale = async (id) => {
   const allSales = await Sales.findAll({ 
     where: { id },
@@ -17,4 +15,3 @@ const getSale = async (id) => {
 module.exports = {
   getSale,
 };
-
