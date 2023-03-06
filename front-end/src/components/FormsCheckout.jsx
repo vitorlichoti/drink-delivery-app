@@ -41,7 +41,8 @@ function Forms() {
     };
     const { status, data } = await httpRequestAxios('post', 'http://localhost:3001/customer/checkout', newData, { headers: { Authorization: token } });
     if (httpCodeHandler.created(status)) {
-      console.log(status, data);
+      console.log(newData);
+      localStorage.removeItem('userCart');
       navigate(`/customer/orders/${data.id}`);
     }
   };
