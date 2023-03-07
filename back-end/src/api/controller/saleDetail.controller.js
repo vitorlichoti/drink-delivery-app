@@ -7,6 +7,14 @@ const getIdSale = async (req, res) => {
   return res.status(200).json(getSaleDetail);
 };
 
+const updateOrderStatus = async (req, res) => {
+  const { id, status } = req.body;
+  await service.updateOrderStatus(Number(id), status);
+
+  return res.status(200).json({ status });
+};
+
 module.exports = {
   getIdSale,
+  updateOrderStatus,
 };

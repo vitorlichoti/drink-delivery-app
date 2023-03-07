@@ -1,61 +1,152 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import formatDate from '../utils/formatDates';
 import httpRequestAxios from '../utils/httpRequestAxios';
 
 const prefix = 'seller_order_details__';
 
+const SPACE_AROUND = 'space-around';
+
 function SellerOrderInfo() {
   const [sales, setSales] = useState([]);
+  const [formatedDate, setFormatedDate] = useState('');
+
+  const [dispatch, setDispatch] = useState(true);
+  const [prepare, setPrepare] = useState(false);
   const { id } = useParams();
 
   async function getAllSales() {
-    const allSales = await httpRequestAxios('get', 'http://localhost:3001/seller/orders');
-
-    setSales(allSales.data);
+    const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`);
+    const date = formatDate(data.saleDate);
+    setFormatedDate(date);
+    setSales(data);
   }
 
   async function onLoad() {
     await getAllSales();
   }
 
+  async function updateOrderStatus(status) {
+    await httpRequestAxios('put', 'http://localhost:3001/seller/orders', {
+      id: sales.id,
+      status,
+    });
+  }
+
+  async function prepareButton() {
+    setPrepare(true);
+    setDispatch(false);
+    updateOrderStatus('Preparando');
+    await onLoad();
+  }
+
+  async function dispatchButton() {
+    updateOrderStatus('Em Trânsito');
+    setDispatch(true);
+    await onLoad();
+  }
+
   useEffect(() => {
-    if (!sales.length) onLoad();
+    if (sales.status === 'Preparando') {
+      setPrepare(true);
+      setDispatch(false);
+    }
+    if (sales.status === 'Em Trânsito') {
+      setPrepare(true);
+      setDispatch(true);
+    }
+  }, [sales]);
+
+  useEffect(() => {
+    if (sales.length === 0) onLoad();
   });
-  console.log(sales);
+
   return (
-    <section style={ { display: 'flex', justifyContent: 'space-around' } }>
+    <section>
       <header
-        style={ { display: 'flex', justifyContent: 'space-around' } }
+        style={ { display: 'flex', justifyContent: `${SPACE_AROUND}` } }
       >
         <div data-testid={ `${prefix}element-order-details-label-order-id` }>
-          { sales[id - 1]?.id }
+          { sales.id }
         </div>
         <div
           data-testid={ `${prefix}element-order-details-label-order-date` }
         >
-          { sales[id - 1]?.date }
+          { formatedDate }
         </div>
         <div
           data-testid={ `${prefix}element-order-details-label-delivery-status` }
         >
-          { sales[id - 1]?.status }
+          { sales.status }
         </div>
         <button
           type="button"
           data-testid={ `${prefix}button-preparing-check` }
+          onClick={ () => prepareButton() }
+          disabled={ prepare }
         >
           PREPARAR PEDIDO
         </button>
         <button
           type="button"
           data-testid={ `${prefix}button-dispatch-check` }
+          onClick={ () => dispatchButton() }
+          disabled={ dispatch }
         >
           SAIU PARA ENTREGA
         </button>
       </header>
+
+      <table style={ { width: '100%' } }>
+        <thead>
+          <tr style={ { display: 'flex', justifyContent: `${SPACE_AROUND}` } }>
+            <th>Item</th>
+            <th>Descrição</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+            <th>Sub-total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sales.products?.map((product, index) => (
+            <tr
+              key={ product.id }
+              style={ { display: 'flex', justifyContent: `${SPACE_AROUND}` } }
+            >
+              <td
+                data-testid={ `${prefix}element-order-table-item-number${index}` }
+              >
+                {index + 1}
+              </td>
+              <td
+                data-testid={ `${prefix}element-order-table-name${index}` }
+              >
+                {product.name}
+              </td>
+              <td
+                data-testid={ `${prefix}element-order-table-quantity${index}` }
+              >
+                {product.SalesProduct.quantity}
+              </td>
+              <td
+                data-testid={ `${prefix}element-order-table-unit-price${index}` }
+              >
+                {product.price.replace(/\./, ',')}
+              </td>
+              <td
+                data-testid={ `${prefix}element-order-table-sub-total${index}` }
+              >
+                {(Math.round(Number(product.price * product.SalesProduct.quantity) * 100) / 100).toFixed(2).replace(/\./, ',')}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
       <footer>
         <p data-testid={ `${prefix}element-order-total-price` }>
-          { `Total: ${sales[id - 1]?.totalPrice}` }
+          { 'Total: ' }
+          {sales.totalPrice?.replace(/\./, ',')}
         </p>
       </footer>
     </section>
