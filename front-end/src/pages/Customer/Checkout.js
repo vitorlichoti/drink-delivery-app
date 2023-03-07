@@ -1,7 +1,7 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
-import TableProducts from '../components/TableProducts';
-import Forms from '../components/FormsCheckout';
+import NavBar from '../../components/NavBar';
+import TableProducts from '../../components/Customer/TableProducts';
+import Forms from '../../components/Customer/FormsCheckout';
 
 function Checkout() {
   return (

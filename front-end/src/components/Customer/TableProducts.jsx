@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { readCartStorage, removeProductFromCart } from '../utils/localStorage';
+import { readCartStorage, removeProductFromCart } from '../../utils/localStorage';
 
 function TableProducts() {
   const [products, setProduts] = useState(readCartStorage());

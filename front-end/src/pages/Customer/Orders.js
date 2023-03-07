@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
-import OrdersCards from '../components/OrdersCards';
+import NavBar from '../../components/NavBar';
+import OrdersCards from '../../components/Customer/OrdersCards';
 
 function Orders() {
   return (

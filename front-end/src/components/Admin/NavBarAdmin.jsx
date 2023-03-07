@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { readStorage, removeToken } from '../utils/localStorage';
+import { readStorage, removeToken } from '../../utils/localStorage';
 
 function NavBarAdmin() {
   const { name } = readStorage();
