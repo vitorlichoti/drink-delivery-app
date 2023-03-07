@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { readCartStorage, readStorage } from '../utils/localStorage';
+import { readCartStorage, readStorage } from '../../utils/localStorage';
 
-import httpRequestAxios from '../utils/httpRequestAxios';
-import httpCodeHandler from '../assets/httpCodeHandler';
+import httpRequestAxios from '../../utils/httpRequestAxios';
+import httpCodeHandler from '../../assets/httpCodeHandler';
 
 function Forms() {
   const [sellers, setSellers] = useState([]);

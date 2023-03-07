@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavBar from '../components/NavBar';
-import CustomerProducts from '../components/CustomerProducts';
-import httpRequestAxios from '../utils/httpRequestAxios';
-import { removeToken, readStorage } from '../utils/localStorage';
+import NavBar from '../../components/NavBar';
+import CustomerProducts from '../../components/Customer/CustomerProducts';
+import httpRequestAxios from '../../utils/httpRequestAxios';
+import { removeToken, readStorage } from '../../utils/localStorage';
 
 const TWO_HUNDRED = 200;
 

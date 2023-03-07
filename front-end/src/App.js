@@ -1,27 +1,14 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
-import OrderDetails from './pages/OrderDetails';
-import Orders from './pages/Orders';
-import SellerOrderDetail from './pages/SellerOrderDetail';
-import Products from './pages/Products';
+import OrderDetails from './pages/Customer/OrderDetails';
+import Orders from './pages/Customer/Orders';
+import SellerOrderDetail from './pages/Seller/SellerOrderDetail';
+import Products from './pages/Customer/Products';
 import Register from './pages/Register';
-import Checkout from './pages/Checkout';
-import SellerOrders from './pages/SellerOrders';
-import Admin from './pages/Admin';
-// import './App.css';
-// import rockGlass from './images/rockGlass.svg';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <span className="logo">TRYBE</span>
-//       <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
-//         Glass
-//       </object>
-//     </div>
-//   );
-// }
+import Checkout from './pages/Customer/Checkout';
+import SellerOrders from './pages/Seller/SellerOrders';
+import Admin from './pages/Admin/Admin';
 
 function App() {
   return (

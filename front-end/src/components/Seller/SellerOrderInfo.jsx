@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import formatDate from '../utils/formatDates';
-import httpRequestAxios from '../utils/httpRequestAxios';
+import formatDate from '../../utils/formatDates';
+import httpRequestAxios from '../../utils/httpRequestAxios';
 
 const prefix = 'seller_order_details__';
 

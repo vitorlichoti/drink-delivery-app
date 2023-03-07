@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import httpRequestAxios from '../utils/httpRequestAxios';
-import formatDate from '../utils/formatDates';
-import { readStorage } from '../utils/localStorage';
+import httpRequestAxios from '../../utils/httpRequestAxios';
+import formatDate from '../../utils/formatDates';
+import { readStorage } from '../../utils/localStorage';
 
 function CustomerOrderDetails() {
   const [order, setOrder] = useState({});

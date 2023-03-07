@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
-import SellerOrderInfo from '../components/SellerOrderInfo';
+import NavBar from '../../components/NavBar';
+import SellerOrderInfo from '../../components/Seller/SellerOrderInfo';
 
 function SellerOrderDetail() {
   return (
