@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import httpRequestAxios from '../../utils/httpRequestAxios';
+import formatDate from '../../utils/formatDates';
 import { readStorage } from '../../utils/localStorage';
 
 function CustomerOrderDetails() {
@@ -14,20 +15,24 @@ function CustomerOrderDetails() {
 
   const { id } = useParams();
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const formatedDate = `${date.getDate().toString()
-      .padStart(2, '0')}/${(date.getMonth() + 1)
-      .toString()
-      .padStart(2, '0')}/${date.getFullYear()}`;
-    return formatedDate;
-  };
+  async function updateOrderStatus(status) {
+    console.log(status);
+    await httpRequestAxios('put', 'http://localhost:3001/seller/orders', {
+      id,
+      status,
+    });
+  }
+
+  async function changeStatus() {
+    setOrderStatus('Entregue');
+    updateOrderStatus('Entregue');
+    setButtonStatus(true);
+  }
 
   useEffect(() => {
     async function getOrderDetail() {
       const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`, {}, { headers: { Authorization: token } });
       const date = formatDate(data.saleDate);
-      console.log(data.status);
       if (data.status === 'Em Trânsito') setButtonStatus(false);
       setSellerName(data.seller.name);
       setFormatedDate(date);
@@ -58,6 +63,7 @@ function CustomerOrderDetails() {
           type="button"
           data-testid="customer_order_details__button-delivery-check"
           disabled={ buttonStatus }
+          onClick={ () => changeStatus() }
         >
           MARCAR COMO ENTREGUE
         </button>
