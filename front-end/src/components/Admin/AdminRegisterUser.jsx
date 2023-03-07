@@ -88,7 +88,7 @@ function AdminRegisterUser() {
           {' '}
           Senha
           <input
-            type="text"
+            type="password"
             data-testid="admin_manage__input-password"
             name="password"
             id="password"
