@@ -5,18 +5,37 @@ import { readStorage } from '../utils/localStorage';
 
 function CustomerOrderDetails() {
   const [order, setOrder] = useState({});
+  const [formatedDateDay, setFormatedDate] = useState('');
+  const [orderStatus, setOrderStatus] = useState();
+  const [sellerName, setSellerName] = useState('');
+  const [buttonStatus, setButtonStatus] = useState(true);
 
   const { token } = readStorage();
 
   const { id } = useParams();
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formatedDate = `${date.getDate().toString()
+      .padStart(2, '0')}/${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}/${date.getFullYear()}`;
+    return formatedDate;
+  };
+
   useEffect(() => {
     async function getOrderDetail() {
       const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`, {}, { headers: { Authorization: token } });
+      const date = formatDate(data.saleDate);
+      console.log(data.status);
+      if (data.status === 'Entregue') setButtonStatus(false);
+      setSellerName(data.seller.name);
+      setFormatedDate(date);
+      setOrderStatus(data.status);
       setOrder(data);
     }
     getOrderDetail();
-  });
+  }, [id, token]);
 
   const TESTID_COMMON = 'customer_order_details__element-order-';
 
@@ -27,14 +46,21 @@ function CustomerOrderDetails() {
           {`PEDIDO ${order.id}`}
         </span>
         <span data-testid={ `${TESTID_COMMON}details-label-seller-name` }>
-          {`P.Vend: ${order.seller.name}`}
+          {`P.Vend: ${sellerName}`}
         </span>
         <span data-testid={ `${TESTID_COMMON}details-label-order-date` }>
-          {`PEDIDO ${order.saleDate}`}
+          {`PEDIDO ${formatedDateDay}`}
         </span>
         <span data-testid={ `${TESTID_COMMON}details-label-delivery-status1` }>
-          {`${order.status.toUpperCase()}`}
+          {`${orderStatus}`}
         </span>
+        <button
+          type="button"
+          data-testid="customer_order_details__button-delivery-check"
+          disabled={ buttonStatus }
+        >
+          MARCAR COMO ENTREGUE
+        </button>
       </div>
       <table>
         <thead>
@@ -47,7 +73,7 @@ function CustomerOrderDetails() {
           </tr>
         </thead>
         <tbody>
-          {order.products.map((product, index) => (
+          {order.products?.map((product, index) => (
             <tr key={ product.id }>
               <td
                 data-testid={ `${TESTID_COMMON}table-item-number-${index}` }
@@ -82,9 +108,8 @@ function CustomerOrderDetails() {
       <h1
         data-testid={ `${TESTID_COMMON}total-price` }
       >
-        TOTAL: R$
-        {' '}
-        {`${order.totalPrice}`}
+        { 'Total: ' }
+        {`${order.totalPrice?.replace(/\./, ',')}`}
       </h1>
     </main>
   );
