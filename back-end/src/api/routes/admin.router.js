@@ -6,6 +6,6 @@ const { adminRegister, returnDBUsers, adminDeletUser } = require('../controller/
 
 route.post('/admin/register', adminRegister);
 route.get('/admin/users', returnDBUsers);
-route.delete('/admin/delete/user', adminDeletUser)
+route.delete('/admin/delete/user', adminDeletUser);
 
 module.exports = route;

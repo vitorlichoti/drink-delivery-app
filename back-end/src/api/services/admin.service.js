@@ -55,5 +55,5 @@ module.exports = {
   createAdminUser,
   findAllUsers,
   getUserEmail,
-  deleteUser
+  deleteUser,
 };
