@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
-import CustomerOrderDetails from '../components/CustomerOrderDetails';
+import NavBar from '../../components/NavBar';
+import CustomerOrderDetails from '../../components/Customer/CustomerOrderDetails';
 
 function OrderDetails() {
   // Pegar o id da url, consultar os detalhes no banco e popular a tabela via props

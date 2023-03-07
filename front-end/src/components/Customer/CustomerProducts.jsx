@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import httpRequestAxios from '../utils/httpRequestAxios';
-import './CustomerProducts.css';
+import httpRequestAxios from '../../utils/httpRequestAxios';
+import '../Style/CustomerProducts.css';
 import {
   addProductToCart,
   decreaseCartProduct,
   readCartStorage,
   changeCartProduct,
-} from '../utils/localStorage';
+} from '../../utils/localStorage';
 
 function CustomerProducts() {
   const [products, setProducts] = useState([]);

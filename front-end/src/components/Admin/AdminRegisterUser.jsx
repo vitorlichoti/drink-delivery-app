@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { NAME_MINIMAL_LENGTH, PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
-import { readStorage } from '../utils/localStorage';
+import { NAME_MINIMAL_LENGTH, PASSWORD_MINIMAL_LENGTH } from '../../assets/constants';
+import { readStorage } from '../../utils/localStorage';
 
-import httpRequestAxios from '../utils/httpRequestAxios';
-import httpCodeHandler from '../assets/httpCodeHandler';
+import httpRequestAxios from '../../utils/httpRequestAxios';
+import httpCodeHandler from '../../assets/httpCodeHandler';
 
 function AdminRegisterUser() {
   const [invalidUser, setInvalidUser] = useState(false);
