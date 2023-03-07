@@ -10,21 +10,10 @@ const SPACE_AROUND = 'space-around';
 function SellerOrderInfo() {
   const [sales, setSales] = useState([]);
   const [formatedDate, setFormatedDate] = useState('');
-
+  const [orderStatus, setOrderStatus] = useState();
   const [dispatch, setDispatch] = useState(true);
   const [prepare, setPrepare] = useState(false);
   const { id } = useParams();
-
-  async function getAllSales() {
-    const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`);
-    const date = formatDate(data.saleDate);
-    setFormatedDate(date);
-    setSales(data);
-  }
-
-  async function onLoad() {
-    await getAllSales();
-  }
 
   async function updateOrderStatus(status) {
     await httpRequestAxios('put', 'http://localhost:3001/seller/orders', {
@@ -33,18 +22,27 @@ function SellerOrderInfo() {
     });
   }
 
-  async function prepareButton() {
+  function prepareButton() {
     setPrepare(true);
     setDispatch(false);
     updateOrderStatus('Preparando');
-    await onLoad();
   }
 
-  async function dispatchButton() {
+  function dispatchButton() {
     updateOrderStatus('Em Trânsito');
     setDispatch(true);
-    await onLoad();
   }
+
+  useEffect(() => {
+    async function getAllSales() {
+      const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`);
+      const date = formatDate(data.saleDate);
+      setOrderStatus(data.status);
+      setFormatedDate(date);
+      setSales(data);
+    }
+    getAllSales();
+  }, [dispatch, prepare, id]);
 
   useEffect(() => {
     if (sales.status === 'Preparando') {
@@ -56,10 +54,6 @@ function SellerOrderInfo() {
       setDispatch(true);
     }
   }, [sales]);
-
-  useEffect(() => {
-    if (sales.length === 0) onLoad();
-  });
 
   return (
     <section>
@@ -77,7 +71,7 @@ function SellerOrderInfo() {
         <div
           data-testid={ `${prefix}element-order-details-label-delivery-status` }
         >
-          { sales.status }
+          { orderStatus }
         </div>
         <button
           type="button"
