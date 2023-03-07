@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
-// import TableProducts from '../components/TableProducts';
+import CustomerOrderDetails from '../components/CustomerOrderDetails';
 
 function OrderDetails() {
   // Pegar o id da url, consultar os detalhes no banco e popular a tabela via props
@@ -9,7 +9,7 @@ function OrderDetails() {
   return (
     <div>
       <NavBar />
-      {/* <TableProducts orderDetais={products} /> */}
+      <CustomerOrderDetails />
     </div>
   );
 }
