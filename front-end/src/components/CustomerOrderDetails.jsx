@@ -28,7 +28,7 @@ function CustomerOrderDetails() {
       const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`, {}, { headers: { Authorization: token } });
       const date = formatDate(data.saleDate);
       console.log(data.status);
-      if (data.status === 'Entregue') setButtonStatus(false);
+      if (data.status === 'Em Trânsito') setButtonStatus(false);
       setSellerName(data.seller.name);
       setFormatedDate(date);
       setOrderStatus(data.status);
