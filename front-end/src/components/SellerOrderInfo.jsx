@@ -33,6 +33,16 @@ function SellerOrderInfo() {
     setDispatch(true);
   }
 
+  // useEffect(() => {
+  //   async function getUpdatedSale() {
+  //     const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`);
+  //     setOrderStatus(data.status);
+  //     setFormatedDate(formatDate(data.saleDate));
+  //     setSales(data);
+  //   }
+  //   getUpdatedSale();
+  // });
+
   useEffect(() => {
     async function getAllSales() {
       const { data } = await httpRequestAxios('get', `http://localhost:3001/customer/orders/${id}`);
@@ -45,11 +55,11 @@ function SellerOrderInfo() {
   }, [dispatch, prepare, id]);
 
   useEffect(() => {
-    if (sales.status === 'Preparando') {
+    if (sales.status === 'Preparando' || sales.status === 'Entregue') {
       setPrepare(true);
       setDispatch(false);
     }
-    if (sales.status === 'Em Trânsito') {
+    if (sales.status === 'Em Trânsito' || sales.status === 'Entregue') {
       setPrepare(true);
       setDispatch(true);
     }
