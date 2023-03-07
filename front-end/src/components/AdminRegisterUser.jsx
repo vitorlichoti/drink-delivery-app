@@ -29,7 +29,6 @@ function AdminRegisterUser() {
   const verifyPassword = passwordHandler(password);
 
   const registerAdmDBUser = async (event, userData) => {
-    console.log(event);
     event.preventDefault();
     const { token } = readStorage();
 
