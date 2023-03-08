@@ -55,8 +55,44 @@
   width: 100%;
 }
 
-.sellerCardStatus {
+.sellerCardStatusPendente {
   background-color: #ccb800;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: 700;
+  height: 50px;
+  padding-top: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 45%;
+}
+
+.sellerCardStatusPreparando {
+  background-color: #6c0;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: 700;
+  height: 50px;
+  padding-top: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 45%;
+}
+
+.sellerCardStatusEmTrânsito {
+  background-color: #ce9634;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: 700;
+  height: 50px;
+  padding-top: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 45%;
+}
+
+.sellerCardStatusEntregue {
+  background-color: #00cc9b;
   border-radius: 5px;
   font-size: large;
   font-weight: 700;
