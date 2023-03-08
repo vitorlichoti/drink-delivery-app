@@ -60,7 +60,7 @@ function SellerOrdersCard() {
           </div>
           <section className="sellerCardStatusDatePrice">
             <div
-              className="sellerCardStatus"
+              className={ `sellerCardStatus${sale.status.replace(/\s/g, '')}` }
               data-testid={ `seller_orders__element-delivery-status-${sale.id}` }
             >
               {sale.status}
