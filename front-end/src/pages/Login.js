@@ -79,7 +79,7 @@ function Login() {
     }
 
     if (user.length !== 0) verifyToken();
-  }, []);
+  });
 
   return (
     <div

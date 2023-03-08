@@ -1,0 +1,93 @@
+.sellerAllCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sellerCard {
+  background-color: #eaf1ef;
+  border: solid 1px #b1c2be;
+  border-radius: 2px;
+  box-shadow: 0 2px 1px #b1c2be;
+  color: #001813;
+  cursor: pointer;
+  display: flex;
+  height: 130px;
+  margin: 12px;
+  padding: 0;
+  width: 40%;
+}
+
+.sellerCard:hover {
+  background-color: #8cddbf;
+  box-shadow: 10px 10px 12px #719ece;
+  color: #262626;
+}
+
+.sellerCard:active {
+  background-color: #2fc18c;
+  box-shadow: rgba(255, 255, 255, 0.1);
+  transform: translateY(4px);
+}
+
+.sellerCardId {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  width: 140px;
+}
+
+.sellerPedido {
+  font-size: 15px;
+  margin: 3px;
+}
+
+.sellerCardStatusDatePrice {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-evenly;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.sellerCardStatus {
+  background-color: #ccb800;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: 700;
+  height: 50px;
+  padding-top: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 45%;
+}
+
+.sellerCardDatePrice {
+  display: flex;
+  flex-direction: column;
+  height: 75px;
+  justify-content: space-evenly;
+  width: 45%;
+}
+
+.sellerCardDatePrice > div {
+  background-color: #f2fffc;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: 700;
+  height: 22px;
+  padding-top: 7px;
+}
+
+.sellerCardAddress {
+  font-size: 15px;
+  height: 20px;
+  padding-right: 10px;
+  text-align: right;
+  width: 100%;
+}
