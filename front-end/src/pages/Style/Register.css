@@ -1,19 +1,19 @@
 .registerContainer {
+  align-items: center;
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-items: center;
 }
 
 .registerForm {
-  width: 300px;
+  background-color: #eaf1ef;
   display: flex;
   flex-direction: column;
-  background-color: #EAF1EF;
   padding: 30px;
+  width: 300px;
 }
 
-.registerForm label { 
+.registerForm label {
   display: flex;
   flex-direction: column;
   font-size: 20px;
@@ -24,10 +24,10 @@
 }
 
 .registerForm input {
-  height: 40px;
   border: 1px solid;
   border-radius: 5px;
   font-size: 20px;
+  height: 40px;
   margin-top: 7px;
 }
 
@@ -35,27 +35,19 @@
   font-size: 40px;
 }
 
-.registerForm button{
-  width: 100%;
-  height: 50px;
-  border: 2px solid #036B52;
+.registerForm button {
+  background-color: #eaf1ef;
+  border: 2px solid #036b52;
   border-radius: 10px;
-  background-color: #EAF1EF;
   font-size: 20px;
-  transition: 0.5s;
+  height: 50px;
   margin-top: 20px;
+  transition: 0.5s;
+  width: 100%;
 }
 
 .registerForm button:enabled {
+  background-color: #036b52;
   color: white;
-  background-color: #036B52;
   cursor: pointer;
-}
-
-.registerForm input {
-  height: 40px;
-  border: 1px solid;
-  border-radius: 5px;
-  font-size: 20px;
-  margin-top: 7px;
 }
