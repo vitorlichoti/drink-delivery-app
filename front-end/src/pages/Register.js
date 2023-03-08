@@ -7,6 +7,8 @@ import httpCodeHandler from '../assets/httpCodeHandler';
 
 import { writeStorage } from '../utils/localStorage';
 
+import './Style/Register.css';
+
 function Register() {
   const [invalidUser, setInvalidUser] = useState(false);
   const [name, setName] = useState('');
@@ -45,8 +47,18 @@ function Register() {
   };
 
   return (
-    <div>
-      <form onSubmit={ (event) => registerDBUser(event, { name, email, password }) }>
+    <div
+      className="registerContainer"
+    >
+      <p
+        className="registerTitle"
+      >
+        Registro
+      </p>
+      <form
+        onSubmit={ (event) => registerDBUser(event, { name, email, password }) }
+        className="registerForm"
+      >
         <label htmlFor="name">
           {' '}
           Nome
@@ -59,7 +71,10 @@ function Register() {
             onChange={ ({ target }) => setName(target.value) }
           />
         </label>
-        <label htmlFor="email">
+        <label
+          htmlFor="email"
+          className="registerEmailLabel"
+        >
           {' '}
           Email
           <input
@@ -71,7 +86,10 @@ function Register() {
             onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
-        <label htmlFor="password">
+        <label
+          htmlFor="password"
+          className="registerPasswordLabel"
+        >
           {' '}
           Senha
           <input
