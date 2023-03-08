@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import httpRequestAxios from '../../utils/httpRequestAxios';
-import '../Style/CustomerProducts.css';
 import {
   addProductToCart,
   decreaseCartProduct,
   readCartStorage,
   changeCartProduct,
 } from '../../utils/localStorage';
+
+import '../Style/CustomerProducts.css';
 
 function CustomerProducts() {
   const [products, setProducts] = useState([]);
@@ -108,7 +109,7 @@ function CustomerProducts() {
         disabled={ Number(totalValue) === 0 }
         onClick={ () => navigate('/customer/checkout') }
       >
-        <p>Ver carrinho:</p>
+        <p>Ver Carrinho: R$</p>
         <p
           data-testid="customer_products__checkout-bottom-value"
         >

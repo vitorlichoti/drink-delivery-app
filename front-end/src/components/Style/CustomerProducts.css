@@ -1,8 +1,23 @@
 .button-cart {
-  align-content: space-between;
+  align-items: center;
+  background-color: rgba(3, 107, 82, 1);
+  border-radius: 12px;
   bottom: 20px;
+  color: rgba(229, 229, 229, 1);
   display: flex;
+  font-size: 40px;
+  font-weight: 550;
+  height: 79px;
+  justify-content: center;
   position: fixed;
   right: 30px;
-  width: 150px;
+  width: 445px;
+}
+
+.button-cart p {
+  margin-right: 12px;
+}
+
+.button-cart:hover {
+  cursor: pointer;
 }
