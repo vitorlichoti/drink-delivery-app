@@ -104,8 +104,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 .button-text-wrapper p {
-  font-size: 18px;
-  height: 8px;
+  font-size: 20px;
+  padding: 10px;
 }
 
 .customer-products-page {
