@@ -5,10 +5,10 @@
 }
 
 .sellerCard {
-  background-color: #EAF1EF;
-  border: solid 1px #B1C2BE;
+  background-color: #eaf1ef;
+  border: solid 1px #b1c2be;
   border-radius: 2px;
-  box-shadow: 0px 2px 1px #B1C2BE;
+  box-shadow: 0 2px 1px #b1c2be;
   color: #001813;
   cursor: pointer;
   display: flex;
@@ -20,12 +20,12 @@
 
 .sellerCard:hover {
   background-color: #8cddbf;
-  box-shadow: 10px 10px 12px #719ECE;
+  box-shadow: 10px 10px 12px #719ece;
   color: #262626;
 }
 
 .sellerCard:active {
-  background-color: #2FC18C;
+  background-color: #2fc18c;
   box-shadow: rgba(255, 255, 255, 0.1);
   transform: translateY(4px);
 }
@@ -37,7 +37,7 @@
   font-size: large;
   height: 100%;
   justify-content: center;
-  margin: 0px;
+  margin: 0;
   width: 140px;
 }
 
@@ -51,15 +51,15 @@
   flex-wrap: wrap;
   height: 100%;
   justify-content: space-evenly;
-  margin: 5px 0 5px 0;
+  margin: 5px 0;
   width: 100%;
 }
 
 .sellerCardStatus {
-  background-color: #CCB800;
+  background-color: #ccb800;
   border-radius: 5px;
   font-size: large;
-  font-weight: bold;
+  font-weight: 700;
   height: 50px;
   padding-top: 25px;
   text-align: center;
@@ -75,11 +75,11 @@
   width: 45%;
 }
 
-.sellerCardDatePrice>div {
-  background-color: #F2FFFC;
+.sellerCardDatePrice > div {
+  background-color: #f2fffc;
   border-radius: 5px;
   font-size: large;
-  font-weight: bold;
+  font-weight: 700;
   height: 22px;
   padding-top: 7px;
 }
