@@ -7,6 +7,9 @@ import httpCodeHandler from '../assets/httpCodeHandler';
 import { PASSWORD_MINIMAL_LENGTH } from '../assets/constants';
 import { writeStorage, readStorage, removeToken } from '../utils/localStorage';
 
+import './Style/Login.css';
+import logo from './Style/logo.jpg';
+
 const TWO_HUNDRED = 200;
 
 function Login() {
@@ -79,9 +82,27 @@ function Login() {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={ (event) => validateDBUser(event, { email, password }) }>
-        <label htmlFor="email">
+    <div
+      className="loginContainer"
+    >
+      <img
+        src={ logo }
+        alt="logo"
+        className="logo"
+      />
+      <p
+        className="appName"
+      >
+        Dona Tereza&apos;s Drinks
+      </p>
+      <form
+        onSubmit={ (event) => validateDBUser(event, { email, password }) }
+        className="loginForm"
+      >
+        <label
+          htmlFor="email"
+          className="LoginEmailLabel"
+        >
           {' '}
           Login
           <input
@@ -93,7 +114,10 @@ function Login() {
             onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
-        <label htmlFor="password">
+        <label
+          htmlFor="password"
+          className="LoginPasswordLabel"
+        >
           {' '}
           Senha
           <input
@@ -109,17 +133,19 @@ function Login() {
           type="submit"
           data-testid="common_login__button-login"
           disabled={ !(verifyemail && verifyPassword) }
+          className="loginBtn"
         >
           LOGIN
         </button>
+        <button
+          type="button"
+          data-testid="common_login__button-register"
+          onClick={ () => navigate('/register') }
+          className="registerBtn"
+        >
+          Ainda não tenho conta
+        </button>
       </form>
-      <button
-        type="button"
-        data-testid="common_login__button-register"
-        onClick={ () => navigate('/register') }
-      >
-        Ainda não tenho conta
-      </button>
       <span
         data-testid="common_login__element-invalid-email"
       >

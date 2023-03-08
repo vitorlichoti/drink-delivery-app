@@ -1,0 +1,64 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.loginForm {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #EAF1EF;
+  padding: 30px;
+}
+
+.loginBtn, .registerBtn {
+  width: 100%;
+  height: 50px;
+  border: 2px solid #036B52;
+  border-radius: 10px;
+  background-color: #EAF1EF;
+  font-size: 20px;
+  transition: 0.5s;
+  margin-top: 20px;
+}
+
+.loginBtn:enabled {
+  color: white;
+  background-color: #036B52;
+  cursor: pointer;
+}
+
+.registerBtn {
+  color: #036B52;
+  cursor: pointer;
+}
+
+.loginForm label { 
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.loginForm input {
+  height: 40px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-top: 7px;
+}
+
+.LoginPasswordLabel {
+  margin-top: 10px;
+}
+
+.logo {
+  width: 40%;
+}
+
+.appName {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
