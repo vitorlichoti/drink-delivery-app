@@ -23,7 +23,6 @@ function UserList() {
   useEffect(() => {
     async function getUsers() {
       const { data } = await httpRequestAxios('get', 'http://localhost:3001/admin/users', {}, { headers: { Authorization: token } });
-      console.log(data);
       setUsers(data);
       setDispatch(!dispatch);
     }
