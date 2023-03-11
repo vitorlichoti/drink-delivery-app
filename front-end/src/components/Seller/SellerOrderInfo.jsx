@@ -3,9 +3,12 @@ import { useParams } from 'react-router-dom';
 import formatDate from '../../utils/formatDates';
 import httpRequestAxios from '../../utils/httpRequestAxios';
 
-const prefix = 'seller_order_details__';
+import handleStatusColor from '../../utils/handleStatusColor';
 
-const SPACE_AROUND = 'space-around';
+import '../Style/SellerOrdersDetails.css';
+
+const prefix = 'seller_order_details__';
+const FOUR = 4;
 
 function SellerOrderInfo() {
   const [sales, setSales] = useState([]);
@@ -66,12 +69,14 @@ function SellerOrderInfo() {
   }, [sales]);
 
   return (
-    <section>
+    <section className="container-main">
       <header
-        style={ { display: 'flex', justifyContent: `${SPACE_AROUND}` } }
+        className="seller-order-header"
       >
         <div data-testid={ `${prefix}element-order-details-label-order-id` }>
-          { sales.id }
+          PEDIDO
+          {' '}
+          { sales.id ? sales.id.toString().padStart(FOUR, '0') : null }
         </div>
         <div
           data-testid={ `${prefix}element-order-details-label-order-date` }
@@ -79,9 +84,10 @@ function SellerOrderInfo() {
           { formatedDate }
         </div>
         <div
+          style={ handleStatusColor(orderStatus) }
           data-testid={ `${prefix}element-order-details-label-delivery-status` }
         >
-          { orderStatus }
+          { orderStatus?.toUpperCase() }
         </div>
         <button
           type="button"
@@ -101,9 +107,9 @@ function SellerOrderInfo() {
         </button>
       </header>
 
-      <table style={ { width: '100%' } }>
+      <table>
         <thead>
-          <tr style={ { display: 'flex', justifyContent: `${SPACE_AROUND}` } }>
+          <tr>
             <th>Item</th>
             <th>Descrição</th>
             <th>Quantidade</th>
@@ -115,7 +121,7 @@ function SellerOrderInfo() {
           {sales.products?.map((product, index) => (
             <tr
               key={ product.id }
-              style={ { display: 'flex', justifyContent: `${SPACE_AROUND}` } }
+              className="table-rows"
             >
               <td
                 data-testid={ `${prefix}element-order-table-item-number${index}` }
@@ -135,11 +141,13 @@ function SellerOrderInfo() {
               <td
                 data-testid={ `${prefix}element-order-table-unit-price${index}` }
               >
+                { 'R$ '}
                 {product.price.replace(/\./, ',')}
               </td>
               <td
                 data-testid={ `${prefix}element-order-table-sub-total${index}` }
               >
+                { 'R$ '}
                 {(Math.round(Number(product.price * product.SalesProduct.quantity) * 100) / 100).toFixed(2).replace(/\./, ',')}
               </td>
             </tr>
@@ -147,9 +155,10 @@ function SellerOrderInfo() {
         </tbody>
       </table>
 
-      <footer>
+      <footer className="footer-total">
         <p data-testid={ `${prefix}element-order-total-price` }>
-          { 'Total: ' }
+          Total: R$
+          {' '}
           {sales.totalPrice?.replace(/\./, ',')}
         </p>
       </footer>

@@ -5,6 +5,8 @@ import { readCartStorage, readStorage } from '../../utils/localStorage';
 import httpRequestAxios from '../../utils/httpRequestAxios';
 import httpCodeHandler from '../../assets/httpCodeHandler';
 
+import '../Style/FormsCheckout.css';
+
 function Forms() {
   const [sellers, setSellers] = useState([]);
   const [address, setAddress] = useState('');
@@ -13,11 +15,11 @@ function Forms() {
 
   const { token, email } = readStorage();
   const products = readCartStorage();
-  const totalPrice = (products.map((product) => Math
+  const totalPrice = (products.length > 0 ? products.map((product) => Math
     .round(product.price
       * product.quantity * 100) / 100)
     .reduce((acc, cur) => acc + cur)
-    .toFixed(2));
+    .toFixed(2) : '0,00');
 
   useEffect(() => {
     async function verifySeller() {
@@ -47,17 +49,17 @@ function Forms() {
   };
 
   return (
-    <main>
-      <div>
-        <h1>Detalhes e Endereço para Entrega</h1>
-        <form>
-          P. Vendedora Responsável:
+    <main className="container-main">
+      <h1 className="form-title">Detalhes e Endereço para Entrega</h1>
+      <form className="form-container">
+        <div className="seller-name-wrapper">
+          <p>P. Vendedora Responsável:</p>
           <select
             name="select"
             id="select"
             data-testid="customer_checkout__select-seller"
           >
-            <option value="" selected disabled hidden> </option>
+            <option value="" selected disabled hidden>Selecione um vendedor...</option>
             {sellers.map((seller, index) => (
               <option
                 key={ index }
@@ -67,7 +69,9 @@ function Forms() {
               </option>
             ))}
           </select>
-          Endereço
+        </div>
+        <div className="adress-wrapper">
+          <p>Endereço:</p>
           <input
             type="text"
             name="address"
@@ -75,7 +79,9 @@ function Forms() {
             onChange={ ({ target }) => setAddress(target.value) }
             data-testid="customer_checkout__input-address"
           />
-          Número
+        </div>
+        <div className="number-wrapper">
+          <p>Número:</p>
           <input
             type="text"
             name="addressNumber"
@@ -83,19 +89,19 @@ function Forms() {
             onChange={ ({ target }) => setAddressNumber(target.value) }
             data-testid="customer_checkout__input-address-number"
           />
-          <button
-            type="submit"
-            data-testid="customer_checkout__button-submit-order"
-            onClick={ (event) => orderFinish(event, {
-              seller_id: select.value,
-              delivery_address: address,
-              delivery_number: addressNumber,
-            }) }
-          >
-            FINALIZAR PEDIDO
-          </button>
-        </form>
-      </div>
+        </div>
+        <button
+          type="submit"
+          data-testid="customer_checkout__button-submit-order"
+          onClick={ (event) => orderFinish(event, {
+            seller_id: select.value,
+            delivery_address: address,
+            delivery_number: addressNumber,
+          }) }
+        >
+          FINALIZAR PEDIDO
+        </button>
+      </form>
     </main>
   );
 }
