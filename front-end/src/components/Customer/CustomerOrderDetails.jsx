@@ -4,12 +4,6 @@ import httpRequestAxios from '../../utils/httpRequestAxios';
 import formatDate from '../../utils/formatDates';
 import { readStorage } from '../../utils/localStorage';
 
-import handleStatusColor from '../../utils/handleStatusColor';
-
-import '../Style/CustomerOrderDetails.css';
-
-const FOUR = 4;
-
 function CustomerOrderDetails() {
   const [order, setOrder] = useState({});
   const [formatedDateDay, setFormatedDate] = useState('');
@@ -51,22 +45,19 @@ function CustomerOrderDetails() {
   const TESTID_COMMON = 'customer_order_details__element-order-';
 
   return (
-    <main className="main-orders-details">
-      <header className="header-container">
+    <main>
+      <div>
         <span data-testid={ `${TESTID_COMMON}details-label-order-id` }>
-          {`PEDIDO ${order.id ? order.id.toString().padStart(FOUR, '0') : null}`}
+          {`PEDIDO ${order.id}`}
         </span>
         <span data-testid={ `${TESTID_COMMON}details-label-seller-name` }>
           {`P.Vend: ${sellerName}`}
         </span>
         <span data-testid={ `${TESTID_COMMON}details-label-order-date` }>
-          {`${formatedDateDay}`}
+          {`PEDIDO ${formatedDateDay}`}
         </span>
-        <span
-          style={ handleStatusColor(orderStatus) }
-          data-testid={ `${TESTID_COMMON}details-label-delivery-status1` }
-        >
-          {`${orderStatus?.toUpperCase()}`}
+        <span data-testid={ `${TESTID_COMMON}details-label-delivery-status1` }>
+          {`${orderStatus}`}
         </span>
         <button
           type="button"
@@ -76,7 +67,7 @@ function CustomerOrderDetails() {
         >
           MARCAR COMO ENTREGUE
         </button>
-      </header>
+      </div>
       <table>
         <thead>
           <tr>
@@ -89,10 +80,7 @@ function CustomerOrderDetails() {
         </thead>
         <tbody>
           {order.products?.map((product, index) => (
-            <tr
-              className="table-rows"
-              key={ product.id }
-            >
+            <tr key={ product.id }>
               <td
                 data-testid={ `${TESTID_COMMON}table-item-number-${index}` }
               >
@@ -123,14 +111,12 @@ function CustomerOrderDetails() {
           ))}
         </tbody>
       </table>
-      <footer className="footer-total">
-        <p
-          data-testid={ `${TESTID_COMMON}total-price` }
-        >
-          { 'Total: R$ ' }
-          {`${order.totalPrice?.replace(/\./, ',')}`}
-        </p>
-      </footer>
+      <h1
+        data-testid={ `${TESTID_COMMON}total-price` }
+      >
+        { 'Total: ' }
+        {`${order.totalPrice?.replace(/\./, ',')}`}
+      </h1>
     </main>
   );
 }
