@@ -1,9 +1,10 @@
-.container-main {
+.container-table-checkout-main {
   border: 1px solid rgba(177, 194, 190, 1);
   box-shadow: 2px 2px rgba(177, 194, 190, 1);
   display: flex;
   flex-direction: column;
   height: max-content;
+  margin-bottom: 40px;
   margin-left: 5%;
   margin-right: 5%;
   position: relative;
@@ -66,17 +67,17 @@ table {
   font-size: 28px;
 }
 
-.footer-total {
+.footer-checkout-total {
   bottom: 20px;
   display: flex;
   justify-content: flex-end;
-  padding-top: 80px;
+  padding-top: 100px;
   position: relative;
   right: 20px;
   width: 100%;
 }
 
-.footer-total h1 {
+.footer-checkout-total h1 {
   align-items: center;
   background-color: rgba(3, 107, 82, 1);
   border-radius: 10px;

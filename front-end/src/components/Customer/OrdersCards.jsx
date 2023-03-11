@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FOUR } from '../../assets/constants';
 import httpRequestAxios from '../../utils/httpRequestAxios';
 import { readStorage } from '../../utils/localStorage';
 
 import '../Style/CustomerOrdersCards.css';
-
-const FOUR = 4;
 
 function OrdersCards() {
   const [orders, setOrders] = useState([]);

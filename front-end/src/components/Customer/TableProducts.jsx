@@ -14,7 +14,7 @@ function TableProducts() {
   const TESTID_COMMON = 'customer_checkout__element-order-';
 
   return (
-    <main className="container-main">
+    <main className="container-table-checkout-main">
       <table>
         <thead>
           <tr>
@@ -70,7 +70,7 @@ function TableProducts() {
           ))}
         </tbody>
       </table>
-      <footer className="footer-total">
+      <footer className="footer-checkout-total">
         <h1
           data-testid={ `${TESTID_COMMON}total-price` }
         >

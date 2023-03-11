@@ -3,7 +3,7 @@
   box-shadow: 2px 2px rgba(177, 194, 190, 1);
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: max-content;
   margin-bottom: 30px;
   margin-left: 10%;
   margin-right: 10%;
@@ -123,7 +123,8 @@ table {
   bottom: 20px;
   display: flex;
   justify-content: flex-end;
-  position: absolute;
+  padding-top: 80px;
+  position: relative;
   right: 20px;
   width: 100%;
 }

@@ -49,7 +49,7 @@ function Forms() {
   };
 
   return (
-    <main className="container-main">
+    <main className="container-form-checkout-main">
       <h1 className="form-title">Detalhes e Endereço para Entrega</h1>
       <form className="form-container">
         <div className="seller-name-wrapper">

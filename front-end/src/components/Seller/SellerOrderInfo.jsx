@@ -5,10 +5,10 @@ import httpRequestAxios from '../../utils/httpRequestAxios';
 
 import handleStatusColor from '../../utils/handleStatusColor';
 
-import '../Style/SellerOrdersDetails.css';
+import '../Style/SellerOrdersInfo.css';
+import { FOUR } from '../../assets/constants';
 
 const prefix = 'seller_order_details__';
-const FOUR = 4;
 
 function SellerOrderInfo() {
   const [sales, setSales] = useState([]);
@@ -69,7 +69,9 @@ function SellerOrderInfo() {
   }, [sales]);
 
   return (
-    <section className="container-main">
+    <section
+      className="container-main"
+    >
       <header
         className="seller-order-header"
       >

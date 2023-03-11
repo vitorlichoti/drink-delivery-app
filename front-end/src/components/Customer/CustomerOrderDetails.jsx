@@ -7,8 +7,7 @@ import { readStorage } from '../../utils/localStorage';
 import handleStatusColor from '../../utils/handleStatusColor';
 
 import '../Style/CustomerOrderDetails.css';
-
-const FOUR = 4;
+import { FOUR } from '../../assets/constants';
 
 function CustomerOrderDetails() {
   const [order, setOrder] = useState({});
