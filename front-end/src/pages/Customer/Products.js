@@ -5,8 +5,6 @@ import CustomerProducts from '../../components/Customer/CustomerProducts';
 import httpRequestAxios from '../../utils/httpRequestAxios';
 import { removeToken, readStorage } from '../../utils/localStorage';
 
-import '../../components/Style/CustomerProducts.css';
-
 const TWO_HUNDRED = 200;
 
 function Products() {
@@ -25,7 +23,7 @@ function Products() {
   });
 
   return (
-    <main className="customer-products-page">
+    <main>
       <NavBar />
       <CustomerProducts />
     </main>
