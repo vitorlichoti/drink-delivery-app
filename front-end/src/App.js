@@ -10,8 +10,6 @@ import Checkout from './pages/Customer/Checkout';
 import SellerOrders from './pages/Seller/SellerOrders';
 import Admin from './pages/Admin/Admin';
 
-import './App.css';
-
 function App() {
   return (
     <Routes>
