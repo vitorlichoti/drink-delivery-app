@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import httpRequestAxios from '../../utils/httpRequestAxios';
 import { readStorage } from '../../utils/localStorage';
 
+import '../Style/UserList.css';
+
 function UserList() {
   const [users, setUsers] = useState([]);
   const [dispatch, setDispatch] = useState(true);
@@ -30,8 +32,8 @@ function UserList() {
   }, [dispatch, token]);
 
   return (
-    <div>
-      <p>Lista de usuarios</p>
+    <div className="main-list">
+      <p className="list-name">Lista de usuários</p>
       <table>
         <tr>
           <th>Item</th>
@@ -42,7 +44,7 @@ function UserList() {
         </tr>
         <tbody>
           {users?.map((user, index) => (
-            <tr key={ index }>
+            <tr key={ index } className="table-rows">
               <td
                 data-testid={ `${TESTID_COMMON}element-user-table-item-number-${index}` }
               >
@@ -63,13 +65,15 @@ function UserList() {
               >
                 {user.role}
               </td>
-              <button
-                type="button"
-                data-testid={ `${TESTID_COMMON}element-user-table-remove-${index}` }
-                onClick={ () => deleteUser(user.id) }
-              >
-                EXCLUIR
-              </button>
+              <td className="table-button">
+                <button
+                  type="button"
+                  data-testid={ `${TESTID_COMMON}element-user-table-remove-${index}` }
+                  onClick={ () => deleteUser(user.id) }
+                >
+                  EXCLUIR
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

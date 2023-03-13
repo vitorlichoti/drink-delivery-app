@@ -1,0 +1,57 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
+  padding-bottom: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+span {
+  font-size: small;
+}
+
+p {
+  font-size: large;
+  font-weight: 600;
+}
+
+form {
+  border: 1px solid rgba(177, 194, 190, 1);
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  box-shadow: 2px 2px rgba(177, 194, 190, 1);
+  display: flex;
+  font-size: large;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+
+input {
+  height: 25px;
+}
+
+select {
+  height: 29px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background-color: #eaf1ef;
+  border: 2px solid #036b52;
+  border-radius: 10px;
+}
+
+button:enabled {
+  background-color: #036b52;
+  color: white;
+  cursor: pointer;
+}
