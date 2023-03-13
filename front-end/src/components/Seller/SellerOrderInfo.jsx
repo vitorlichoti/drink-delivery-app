@@ -147,6 +147,7 @@ function SellerOrderInfo() {
                 {product.price.replace(/\./, ',')}
               </td>
               <td
+                className="seller-sub-total"
                 data-testid={ `${prefix}element-order-table-sub-total${index}` }
               >
                 { 'R$ '}

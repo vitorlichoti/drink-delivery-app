@@ -112,7 +112,7 @@ table {
   font-weight: 550;
 }
 
-.table-rows td:nth-of-type( 5 ) {
+.seller-sub-total {
   background-color: rgba(5, 108, 249, 1);
   border-radius: 0 15px 15px 0;
   color: rgba(242, 255, 252, 1);

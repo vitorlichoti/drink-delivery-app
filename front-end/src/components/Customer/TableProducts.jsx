@@ -50,11 +50,14 @@ function TableProducts() {
               <td
                 data-testid={ `${TESTID_COMMON}table-unit-price-${index}` }
               >
+                {'R$ '}
                 {product.price.replace(/\./, ',')}
               </td>
               <td
+                className="products-sub-total"
                 data-testid={ `${TESTID_COMMON}table-sub-total-${index}` }
               >
+                {'R$ '}
                 {(Math.round(Number(product.price * product.quantity) * 100) / 100).toFixed(2).replace(/\./, ',')}
               </td>
               <td className="table-button">

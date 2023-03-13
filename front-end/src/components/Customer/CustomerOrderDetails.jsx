@@ -110,11 +110,16 @@ function CustomerOrderDetails() {
               <td
                 data-testid={ `${TESTID_COMMON}table-unit-price-${index}` }
               >
-                {`R$${product.price.replace(/\./, ',')}`}
+                R$
+                {' '}
+                {`${product.price.replace(/\./, ',')}`}
               </td>
               <td
+                className="sub-total"
                 data-testid={ `${TESTID_COMMON}table-sub-total-${index}` }
               >
+                R$
+                {' '}
                 {(Number(product.price) * Number(product.SalesProduct.quantity))
                   .toFixed(2)}
               </td>

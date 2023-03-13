@@ -52,6 +52,8 @@ function OrdersCards() {
               <div
                 data-testid={ `customer_orders__element-card-price-${order.id}` }
               >
+                R$
+                {' '}
                 { String(order.totalPrice).replace(/\./, ',') }
               </div>
             </div>

@@ -46,9 +46,8 @@ table {
   font-weight: 550;
 }
 
-.table-rows td:nth-of-type( 5 ) {
+.products-sub-total {
   background-color: rgba(5, 108, 249, 1);
-  border-radius: 0 15px 15px 0;
   color: rgba(242, 255, 252, 1);
   font-weight: 550;
 }
@@ -57,14 +56,15 @@ table {
   background-color: rgba(47, 193, 140, 1);
   border-radius: 0 15px 15px 0;
   color: rgba(242, 255, 252, 1);
-  font-weight: 550;
 }
 
 .table-button button {
   background-color: rgba(47, 193, 140, 1);
   border-style: none;
   color: rgba(242, 255, 252, 1);
+  cursor: pointer;
   font-size: 28px;
+  font-weight: 550;
 }
 
 .footer-checkout-total {
