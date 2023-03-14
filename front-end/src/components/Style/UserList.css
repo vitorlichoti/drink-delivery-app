@@ -1,4 +1,3 @@
-<<<<<<< HEAD:front-end/src/components/Style/TableProducts.css
 .container-table-checkout-main {
   border: 1px solid rgba(177, 194, 190, 1);
   box-shadow: 2px 2px rgba(177, 194, 190, 1);
@@ -10,13 +9,13 @@
   margin-right: 5%;
   position: relative;
   width: 90%;
-=======
+}
+
 .main-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 25px 10%;
->>>>>>> main-group-24:front-end/src/components/Style/UserList.css
 }
 
 table {
@@ -58,10 +57,7 @@ table {
 
 .products-sub-total {
   background-color: rgba(5, 108, 249, 1);
-<<<<<<< HEAD:front-end/src/components/Style/TableProducts.css
-=======
   border-radius: 0 15px 15px 0;
->>>>>>> main-group-24:front-end/src/components/Style/UserList.css
   color: rgba(242, 255, 252, 1);
   text-align: center;
 }
@@ -81,7 +77,6 @@ table {
   font-weight: 550;
 }
 
-<<<<<<< HEAD:front-end/src/components/Style/TableProducts.css
 .footer-checkout-total {
   bottom: 20px;
   display: flex;
@@ -105,10 +100,10 @@ table {
   margin-bottom: 20px;
   margin-right: 16px;
   width: 512px;
-=======
+}
+
 .list-name {
   font-size: large;
   font-weight: 800;
   margin-bottom: 10px;
->>>>>>> main-group-24:front-end/src/components/Style/UserList.css
 }

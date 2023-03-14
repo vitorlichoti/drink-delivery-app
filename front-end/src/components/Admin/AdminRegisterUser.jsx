@@ -5,6 +5,8 @@ import { readStorage } from '../../utils/localStorage';
 import httpRequestAxios from '../../utils/httpRequestAxios';
 import httpCodeHandler from '../../assets/httpCodeHandler';
 
+import '../Style/AdminRegisterUser.css';
+
 function AdminRegisterUser() {
   const [invalidUser, setInvalidUser] = useState(false);
   const [name, setName] = useState('');
@@ -44,12 +46,15 @@ function AdminRegisterUser() {
   };
 
   return (
-    <div>
-      <span
-        data-testid="admin_manage__element-invalid-register"
-      >
-        { invalidUser && <p>Dados inválidos</p> }
-      </span>
+    <div className="main-container">
+      <div className="header">
+        <p>Cadastrar novo usuário</p>
+        <span
+          data-testid="admin_manage__element-invalid-register"
+        >
+          { invalidUser && <p>Dados inválidos</p> }
+        </span>
+      </div>
       <form
         onSubmit={ (event) => registerAdmDBUser(event, {
           name,
@@ -58,8 +63,6 @@ function AdminRegisterUser() {
           role: role.value,
         }) }
       >
-        Cadastrar novo usuario
-        <p />
         <label htmlFor="name">
           {' '}
           Nome
