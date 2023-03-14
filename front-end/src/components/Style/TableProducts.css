@@ -11,21 +11,13 @@
   width: 90%;
 }
 
-.main-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 25px 10%;
-}
-
 table {
-  border: 1px solid rgba(177, 194, 190, 1);
   border-collapse: separate;
   border-spacing: 0 15px;
-  box-shadow: 2px 2px rgba(177, 194, 190, 1);
   font-size: large;
-  margin-bottom: 40px;
-  padding: 0 10px;
+  line-height: 50px;
+  padding: 10px;
+  text-align: center;
 }
 
 .table-rows {
@@ -35,41 +27,39 @@ table {
 .table-rows td:nth-of-type( 1 ) {
   background-color: rgba(47, 193, 140, 1);
   border-radius: 15px 0 0 15px;
-  text-align: center;
   width: 60px;
 }
 
 .table-rows td:nth-of-type( 2 ) {
-  background-color: #eaf1ef;
+  background-color: rgba(234, 241, 239, 1);
+  width: 65%;
 }
 
 .table-rows td:nth-of-type( 3 ) {
   background-color: rgba(3, 107, 82, 1);
   color: rgba(242, 255, 252, 1);
-  text-align: center;
 }
 
 .table-rows td:nth-of-type( 4 ) {
   background-color: rgba(66, 25, 129, 1);
   color: rgba(242, 255, 252, 1);
-  text-align: center;
+  font-weight: 550;
 }
 
 .products-sub-total {
   background-color: rgba(5, 108, 249, 1);
-  border-radius: 0 15px 15px 0;
   color: rgba(242, 255, 252, 1);
-  text-align: center;
+  font-weight: 550;
 }
 
 .table-button {
-  background-color: rgba(5, 108, 249, 1);
+  background-color: rgba(47, 193, 140, 1);
+  border-radius: 0 15px 15px 0;
   color: rgba(242, 255, 252, 1);
 }
 
 .table-button button {
-  background-color: rgba(5, 108, 249, 1);
-  border-radius: 0 15px 15px 0;
+  background-color: rgba(47, 193, 140, 1);
   border-style: none;
   color: rgba(242, 255, 252, 1);
   cursor: pointer;
@@ -100,10 +90,4 @@ table {
   margin-bottom: 20px;
   margin-right: 16px;
   width: 512px;
-}
-
-.list-name {
-  font-size: large;
-  font-weight: 800;
-  margin-bottom: 10px;
 }

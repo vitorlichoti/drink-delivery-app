@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { readCartStorage, removeProductFromCart } from '../../utils/localStorage';
 
+import '../Style/TableProducts.css';
+
 function TableProducts() {
   const [products, setProduts] = useState(readCartStorage());
 
@@ -12,7 +14,7 @@ function TableProducts() {
   const TESTID_COMMON = 'customer_checkout__element-order-';
 
   return (
-    <main>
+    <main className="container-table-checkout-main">
       <table>
         <thead>
           <tr>
@@ -26,7 +28,10 @@ function TableProducts() {
         </thead>
         <tbody>
           {products.map((product, index) => (
-            <tr key={ product.id }>
+            <tr
+              className="table-rows"
+              key={ product.id }
+            >
               <td
                 data-testid={ `${TESTID_COMMON}table-item-number-${index}` }
               >
@@ -45,14 +50,17 @@ function TableProducts() {
               <td
                 data-testid={ `${TESTID_COMMON}table-unit-price-${index}` }
               >
+                {'R$ '}
                 {product.price.replace(/\./, ',')}
               </td>
               <td
+                className="products-sub-total"
                 data-testid={ `${TESTID_COMMON}table-sub-total-${index}` }
               >
+                {'R$ '}
                 {(Math.round(Number(product.price * product.quantity) * 100) / 100).toFixed(2).replace(/\./, ',')}
               </td>
-              <td>
+              <td className="table-button">
                 <button
                   type="button"
                   data-testid={ `${TESTID_COMMON}table-remove-${index}` }
@@ -65,19 +73,21 @@ function TableProducts() {
           ))}
         </tbody>
       </table>
-      <h1
-        data-testid={ `${TESTID_COMMON}total-price` }
-      >
-        TOTAL: R$
-        {' '}
-        {products.length > 0
-          ? products.map((product) => Math
-            .round(product.price
-              * product.quantity * 100) / 100)
-            .reduce((acc, cur) => acc + cur)
-            .toFixed(2).replace(/\./, ',')
-          : null}
-      </h1>
+      <footer className="footer-checkout-total">
+        <h1
+          data-testid={ `${TESTID_COMMON}total-price` }
+        >
+          TOTAL: R$
+          {' '}
+          {products.length > 0
+            ? products.map((product) => Math
+              .round(product.price
+                * product.quantity * 100) / 100)
+              .reduce((acc, cur) => acc + cur)
+              .toFixed(2).replace(/\./, ',')
+            : null}
+        </h1>
+      </footer>
     </main>
   );
 }
