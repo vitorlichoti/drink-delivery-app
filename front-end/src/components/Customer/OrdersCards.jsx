@@ -21,7 +21,7 @@ function OrdersCards() {
 
   return (
     <div className="customerAllCards">
-      { orders.map((order) => (
+      { orders?.map((order) => (
         <Link
           className="customerCard"
           key={ order.id }
