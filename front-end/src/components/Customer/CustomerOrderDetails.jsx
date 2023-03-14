@@ -3,9 +3,7 @@ import { useParams } from 'react-router-dom';
 import httpRequestAxios from '../../utils/httpRequestAxios';
 import formatDate from '../../utils/formatDates';
 import { readStorage } from '../../utils/localStorage';
-
 import handleStatusColor from '../../utils/handleStatusColor';
-
 import '../Style/CustomerOrderDetails.css';
 import { FOUR } from '../../assets/constants';
 
