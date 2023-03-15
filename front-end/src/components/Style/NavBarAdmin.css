@@ -1,4 +1,4 @@
-.menu-container {
+/* .admin-menu-container {
   background-color: rgba(3, 107, 82, 1);
   display: flex;
   height: 105px;
@@ -6,7 +6,7 @@
   width: 1920px;
 }
 
-.user-manage {
+.admin-user-manage {
   align-items: center;
   background-color: rgba(47, 193, 140, 1);
   display: flex;
@@ -16,13 +16,13 @@
   width: 367px;
 }
 
-.user-and-button {
+.admin-user-and-button {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
 
-.customer-name {
+.admin-customer-name {
   align-items: center;
   background-color: rgba(66, 25, 129, 1);
   color: rgba(242, 255, 252, 1);
@@ -32,7 +32,7 @@
   width: 359px;
 }
 
-.loggout-button {
+.admin-loggout-button {
   background-color: rgba(5, 108, 249, 1);
   border-style: none;
   color: rgba(242, 255, 252, 1);
@@ -41,4 +41,4 @@
   font-weight: 600;
   height: 105px;
   width: 180px;
-}
+} */
