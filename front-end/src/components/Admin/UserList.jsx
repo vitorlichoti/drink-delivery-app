@@ -32,9 +32,9 @@ function UserList() {
   }, [dispatch, token]);
 
   return (
-    <div className="main-list">
-      <p className="list-name">Lista de usuários</p>
-      <table>
+    <div className="users-main-list">
+      <p className="users-list-name">Lista de usuários</p>
+      <table className="users-table-main">
         <tr>
           <th>Item</th>
           <th>Nome</th>
@@ -44,7 +44,7 @@ function UserList() {
         </tr>
         <tbody>
           {users?.map((user, index) => (
-            <tr key={ index } className="table-rows">
+            <tr key={ index } className="users-table-rows">
               <td
                 data-testid={ `${TESTID_COMMON}element-user-table-item-number-${index}` }
               >
@@ -65,7 +65,7 @@ function UserList() {
               >
                 {user.role}
               </td>
-              <td className="table-button">
+              <td className="users-table-button">
                 <button
                   type="button"
                   data-testid={ `${TESTID_COMMON}element-user-table-remove-${index}` }

@@ -119,7 +119,7 @@ function CustomerOrderDetails() {
                 R$
                 {' '}
                 {(Number(product.price) * Number(product.SalesProduct.quantity))
-                  .toFixed(2)}
+                  .toFixed(2).replace(/\./, ',')}
               </td>
             </tr>
           ))}

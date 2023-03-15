@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import httpRequestAxios from '../../utils/httpRequestAxios';
-// import '../Style/SellerOrdersCard.css';
+import '../Style/SellerOrdersCard.css';
 
 function SellerOrdersCard() {
   const [sales, setSales] = useState([]);

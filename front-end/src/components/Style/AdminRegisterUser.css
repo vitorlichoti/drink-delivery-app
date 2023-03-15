@@ -1,25 +1,25 @@
-.main-container {
+.admin-main-container {
   display: flex;
   flex-direction: column;
   margin: 0 10%;
   padding-bottom: 0;
 }
 
-.header {
+.admin-header {
   display: flex;
   justify-content: space-between;
 }
 
-span {
+.admin-header span {
   font-size: small;
 }
 
-p {
+.admin-header p {
   font-size: large;
   font-weight: 600;
 }
 
-form {
+.admin-form {
   border: 1px solid rgba(177, 194, 190, 1);
   border-collapse: separate;
   border-spacing: 0 15px;
@@ -31,26 +31,26 @@ form {
   padding: 10px;
 }
 
-input {
+.admin-form input {
   height: 25px;
 }
 
-select {
+.admin-form select {
   height: 29px;
 }
 
-label {
+.admin-form label {
   display: flex;
   flex-direction: column;
 }
 
-button {
+.admin-form button {
   background-color: #eaf1ef;
   border: 2px solid #036b52;
   border-radius: 10px;
 }
 
-button:enabled {
+.admin-form button:enabled {
   background-color: #036b52;
   color: white;
   cursor: pointer;

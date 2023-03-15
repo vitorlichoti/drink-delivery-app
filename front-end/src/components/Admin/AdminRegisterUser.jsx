@@ -46,8 +46,8 @@ function AdminRegisterUser() {
   };
 
   return (
-    <div className="main-container">
-      <div className="header">
+    <div className="admin-main-container">
+      <div className="admin-header">
         <p>Cadastrar novo usuário</p>
         <span
           data-testid="admin_manage__element-invalid-register"
@@ -56,6 +56,7 @@ function AdminRegisterUser() {
         </span>
       </div>
       <form
+        className="admin-form"
         onSubmit={ (event) => registerAdmDBUser(event, {
           name,
           email,
